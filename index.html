@@ -1,0 +1,1007 @@
+<!doctype html>
+<html lang="ka">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Pulsar | AI, ავტომატიზაცია და ბიზნეს პროგრამები</title>
+    <meta
+      name="description"
+      content="Pulsar ეხმარება კომპანიებს დროის დაზოგვაში, შეცდომების შემცირებაში და ყოველდღიური სამუშაოს უკეთ კონტროლში AI-ით, ავტომატიზაციით, პროგრამებით და ჭკვიანი კამერებით."
+    >
+    <link rel="canonical" href="/">
+    <link rel="alternate" hreflang="ka" href="/">
+    <link rel="alternate" hreflang="en" href="/en/">
+    <link rel="alternate" hreflang="x-default" href="/">
+    <style>
+      :root {
+        --purple: #7c3aed;
+        --green: #16c34a;
+        --black: #0f1115;
+        --graphite: #475467;
+        --white: #ffffff;
+        --light: #f5f7fa;
+        --divider: #d9dee5;
+        --muted: #98a2b3;
+        --shadow: 0 22px 60px rgba(15, 17, 21, 0.1);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        color: var(--black);
+        background: var(--white);
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        line-height: 1.5;
+      }
+
+      img {
+        display: block;
+        max-width: 100%;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .container {
+        width: min(1120px, calc(100% - 40px));
+        margin: 0 auto;
+      }
+
+      .nav {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        background: rgba(255, 255, 255, 0.94);
+        border-bottom: 1px solid var(--divider);
+        backdrop-filter: blur(14px);
+      }
+
+      .nav-inner {
+        min-height: 76px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-size: 22px;
+        font-weight: 850;
+      }
+
+      .brand img {
+        width: 104px;
+        height: 42px;
+        object-fit: contain;
+      }
+
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 24px;
+        color: var(--graphite);
+        font-size: 15px;
+        font-weight: 700;
+      }
+
+      .button {
+        min-height: 46px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 20px;
+        border-radius: 8px;
+        border: 1px solid transparent;
+        background: var(--purple);
+        color: var(--white);
+        font-size: 15px;
+        font-weight: 850;
+        box-shadow: 0 14px 30px rgba(124, 58, 237, 0.22);
+        white-space: nowrap;
+      }
+
+      .button.secondary {
+        background: var(--white);
+        color: var(--black);
+        border-color: var(--divider);
+        box-shadow: none;
+      }
+
+      .hero {
+        min-height: calc(100vh - 76px);
+        display: grid;
+        align-items: center;
+        padding: 72px 0 84px;
+        background: var(--light);
+      }
+
+      .hero-grid,
+      .split {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(340px, 470px);
+        gap: 56px;
+        align-items: center;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 18px;
+        color: var(--purple);
+        font-size: 14px;
+        font-weight: 850;
+      }
+
+      .eyebrow::before {
+        content: "";
+        width: 9px;
+        height: 9px;
+        border-radius: 50%;
+        background: var(--green);
+      }
+
+      h1,
+      h2,
+      h3,
+      p {
+        margin-top: 0;
+      }
+
+      h1 {
+        max-width: 700px;
+        margin-bottom: 20px;
+        font-size: clamp(38px, 4.7vw, 60px);
+        line-height: 1.08;
+        letter-spacing: 0;
+      }
+
+      .hero-copy {
+        max-width: 680px;
+        margin-bottom: 30px;
+        color: var(--graphite);
+        font-size: 20px;
+      }
+
+      .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 14px;
+        margin-bottom: 32px;
+      }
+
+      .proof-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+        color: var(--graphite);
+        font-size: 15px;
+        font-weight: 750;
+      }
+
+      .proof-row span {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .proof-row span::before {
+        content: "";
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--green);
+      }
+
+      .work-card {
+        border: 1px solid var(--divider);
+        border-radius: 8px;
+        background: var(--white);
+        box-shadow: var(--shadow);
+        overflow: hidden;
+      }
+
+      .work-card-head {
+        padding: 20px;
+        border-bottom: 1px solid var(--divider);
+      }
+
+      .work-card-head strong {
+        display: block;
+        margin-bottom: 6px;
+        font-size: 19px;
+      }
+
+      .work-card-head span {
+        color: var(--graphite);
+      }
+
+      .work-list {
+        display: grid;
+        gap: 12px;
+        padding: 20px;
+      }
+
+      .work-item {
+        display: grid;
+        grid-template-columns: 40px 1fr auto;
+        gap: 12px;
+        align-items: center;
+        padding: 14px;
+        border: 1px solid var(--divider);
+        border-radius: 8px;
+      }
+
+      .work-icon {
+        width: 40px;
+        height: 40px;
+        display: grid;
+        place-items: center;
+        border-radius: 8px;
+        background: rgba(124, 58, 237, 0.1);
+        color: var(--purple);
+        font-weight: 900;
+      }
+
+      .work-item strong {
+        display: block;
+        margin-bottom: 2px;
+      }
+
+      .work-item span {
+        color: var(--graphite);
+        font-size: 14px;
+      }
+
+      .tag {
+        padding: 6px 10px;
+        border-radius: 999px;
+        background: rgba(22, 195, 74, 0.12);
+        color: var(--green);
+        font-size: 13px;
+        font-weight: 850;
+      }
+
+      .card-metrics {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1px;
+        background: var(--divider);
+      }
+
+      .metric {
+        padding: 18px;
+        background: var(--white);
+      }
+
+      .metric strong {
+        display: block;
+        margin-bottom: 4px;
+        font-size: 21px;
+      }
+
+      .metric span {
+        color: var(--graphite);
+        font-size: 13px;
+        font-weight: 750;
+      }
+
+      section {
+        padding: 88px 0;
+      }
+
+      .band {
+        background: var(--light);
+      }
+
+      .section-head {
+        max-width: 760px;
+        margin-bottom: 38px;
+      }
+
+      .section-head.center {
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+      }
+
+      h2 {
+        margin-bottom: 14px;
+        font-size: clamp(32px, 4vw, 48px);
+        line-height: 1.05;
+        letter-spacing: 0;
+      }
+
+      .section-head p,
+      .wide-copy {
+        color: var(--graphite);
+        font-size: 19px;
+      }
+
+      .cards {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 18px;
+      }
+
+      .card {
+        min-height: 250px;
+        padding: 26px;
+        border: 1px solid var(--divider);
+        border-radius: 8px;
+        background: var(--white);
+      }
+
+      .card.featured {
+        background: var(--black);
+        color: var(--white);
+        border-color: var(--black);
+      }
+
+      .icon {
+        width: 46px;
+        height: 46px;
+        display: grid;
+        place-items: center;
+        margin-bottom: 20px;
+        border-radius: 8px;
+        background: var(--purple);
+        color: var(--white);
+        font-weight: 900;
+      }
+
+      .icon.green {
+        background: var(--green);
+      }
+
+      .card h3 {
+        margin-bottom: 10px;
+        font-size: 22px;
+        line-height: 1.18;
+      }
+
+      .card p {
+        color: var(--graphite);
+        font-size: 16px;
+      }
+
+      .card.featured p {
+        color: #d9dee5;
+      }
+
+      .benefit-list {
+        display: grid;
+        gap: 16px;
+        margin-top: 28px;
+      }
+
+      .benefit {
+        display: grid;
+        grid-template-columns: 34px 1fr;
+        gap: 14px;
+        align-items: start;
+      }
+
+      .check {
+        width: 34px;
+        height: 34px;
+        display: grid;
+        place-items: center;
+        border-radius: 50%;
+        background: rgba(22, 195, 74, 0.12);
+        color: var(--green);
+        font-weight: 900;
+      }
+
+      .benefit strong {
+        display: block;
+        margin-bottom: 3px;
+        font-size: 18px;
+      }
+
+      .benefit span {
+        color: var(--graphite);
+      }
+
+      .simple-panel {
+        padding: 28px;
+        border: 1px solid var(--divider);
+        border-radius: 8px;
+        background: var(--white);
+        box-shadow: var(--shadow);
+      }
+
+      .simple-panel h3 {
+        margin-bottom: 18px;
+        font-size: 24px;
+      }
+
+      .bar-list {
+        display: grid;
+        gap: 16px;
+      }
+
+      .bar-row {
+        display: grid;
+        gap: 8px;
+      }
+
+      .bar-row span {
+        display: flex;
+        justify-content: space-between;
+        color: var(--graphite);
+        font-size: 14px;
+        font-weight: 750;
+      }
+
+      .bar {
+        height: 12px;
+        border-radius: 999px;
+        background: var(--light);
+        overflow: hidden;
+      }
+
+      .bar i {
+        display: block;
+        height: 100%;
+        border-radius: inherit;
+        background: var(--green);
+      }
+
+      .bar.purple i {
+        background: var(--purple);
+      }
+
+      .industries {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1px;
+        overflow: hidden;
+        border: 1px solid var(--divider);
+        border-radius: 8px;
+        background: var(--divider);
+      }
+
+      .industry {
+        min-height: 300px;
+        padding: 30px;
+        background: var(--white);
+      }
+
+      .industry ul {
+        display: grid;
+        gap: 12px;
+        margin: 22px 0 0;
+        padding: 0;
+        list-style: none;
+        color: var(--graphite);
+      }
+
+      .industry li {
+        position: relative;
+        padding-left: 20px;
+      }
+
+      .industry li::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 10px;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--green);
+      }
+
+      .steps {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 18px;
+        counter-reset: step;
+      }
+
+      .step {
+        padding: 26px;
+        border-top: 4px solid var(--purple);
+        border-radius: 8px;
+        background: var(--white);
+        counter-increment: step;
+      }
+
+      .step::before {
+        content: "0" counter(step);
+        display: block;
+        margin-bottom: 18px;
+        color: var(--muted);
+        font-weight: 900;
+      }
+
+      .step h3 {
+        font-size: 21px;
+      }
+
+      .step p {
+        color: var(--graphite);
+      }
+
+      .cta {
+        padding: 74px 0;
+        background: var(--black);
+        color: var(--white);
+      }
+
+      .cta-box {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 30px;
+        align-items: center;
+      }
+
+      .cta p {
+        max-width: 680px;
+        margin-bottom: 0;
+        color: #d9dee5;
+        font-size: 19px;
+      }
+
+      footer {
+        padding: 38px 0;
+        border-top: 1px solid var(--divider);
+      }
+
+      .footer-grid {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 24px;
+        align-items: center;
+      }
+
+      .footer-brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .footer-brand img {
+        width: 104px;
+        height: 38px;
+        object-fit: contain;
+      }
+
+      .footer-brand strong {
+        display: block;
+      }
+
+      .footer-brand span,
+      .footer-contact {
+        color: var(--graphite);
+      }
+
+      .footer-contact {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        gap: 16px;
+        font-weight: 750;
+      }
+
+      @media (max-width: 980px) {
+        .nav-links {
+          display: none;
+        }
+
+        .hero-grid,
+        .split,
+        .cta-box,
+        .footer-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .cards,
+        .steps {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .industries {
+          grid-template-columns: 1fr;
+        }
+
+        .simple-panel,
+        .work-card {
+          max-width: 560px;
+        }
+
+        .footer-contact {
+          justify-content: flex-start;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .container {
+          width: min(100% - 28px, 1120px);
+        }
+
+        .brand img {
+          width: 92px;
+        }
+
+        section,
+        .hero {
+          padding: 62px 0;
+        }
+
+        .hero-copy,
+        .section-head p,
+        .wide-copy,
+        .cta p {
+          font-size: 18px;
+        }
+
+        h1 {
+          font-size: 38px;
+          line-height: 1.08;
+        }
+
+        .hero-actions,
+        .hero-actions .button,
+        .cta .button {
+          width: 100%;
+        }
+
+        .cards,
+        .steps,
+        .card-metrics {
+          grid-template-columns: 1fr;
+        }
+
+        .work-item {
+          grid-template-columns: 40px 1fr;
+        }
+
+        .tag {
+          grid-column: 1 / -1;
+          justify-self: start;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="nav">
+      <div class="container nav-inner">
+        <a class="brand" href="#top" aria-label="Pulsar მთავარი გვერდი">
+          <img src="pulsar-logo-cropped.png" alt="Pulsar ლოგო">
+        </a>
+        <nav class="nav-links" aria-label="მთავარი ნავიგაცია">
+          <a href="#services">სერვისები</a>
+          <a href="#benefits">სარგებელი</a>
+          <a href="#industries">ვისთვის</a>
+          <a href="#contact">კონტაქტი</a>
+          <a href="en/">English</a>
+        </nav>
+        <a class="button" href="mailto:info@pulsartech.ge">დაგვიკავშირდით</a>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="container hero-grid">
+          <div>
+            <div class="eyebrow">AI, ავტომატიზაცია, პროგრამები და ჭკვიანი კამერები</div>
+            <h1>თქვენი ბიზნესის მართვა უფრო მარტივი ხდება.</h1>
+            <p class="hero-copy">
+              Pulsar ეხმარება კომპანიებს დროის დაზოგვაში, შეცდომების შემცირებაში და ყოველდღიური სამუშაოს უკეთ კონტროლში. ჩვენ ვქმნით მარტივ ტექნოლოგიას, რომელსაც თქვენი გუნდი რეალურად გამოიყენებს.
+            </p>
+            <div class="hero-actions">
+              <a class="button" href="tel:+995599992030">დარეკეთ Pulsar-ში</a>
+              <a class="button secondary" href="#services">ნახეთ როგორ გეხმარებით</a>
+            </div>
+            <div class="proof-row">
+              <span>ნაკლები ხელით სამუშაო</span>
+              <span>უფრო მარტივი კონტროლი</span>
+              <span>უფრო სწრაფი გადაწყვეტილებები</span>
+            </div>
+          </div>
+
+          <aside class="work-card" aria-label="ბიზნეს პროცესების მაგალითი">
+            <div class="work-card-head">
+              <strong>რას აგვარებს Pulsar</strong>
+              <span>ყოველდღიური პრობლემები მარტივ ნაბიჯებად იქცევა.</span>
+            </div>
+            <div class="work-list">
+              <div class="work-item">
+                <div class="work-icon">1</div>
+                <div>
+                  <strong>რეპორტები დიდ დროს გართმევთ</strong>
+                  <span>ვაკეთებთ ავტომატურად.</span>
+                </div>
+                <div class="tag">დრო</div>
+              </div>
+              <div class="work-item">
+                <div class="work-icon">2</div>
+                <div>
+                  <strong>სამუშაოს კონტროლი რთულია</strong>
+                  <span>ყველაფერს ერთ ადგილას გაჩვენებთ.</span>
+                </div>
+                <div class="tag">კონტროლი</div>
+              </div>
+              <div class="work-item">
+                <div class="work-icon">3</div>
+                <div>
+                  <strong>გუნდი ერთსა და იმავეს იმეორებს</strong>
+                  <span>რუტინულ საქმეს ვაავტომატებთ.</span>
+                </div>
+                <div class="tag">სისწრაფე</div>
+              </div>
+            </div>
+            <div class="card-metrics">
+              <div class="metric">
+                <strong>დრო</strong>
+                <span>დაზოგეთ საათები</span>
+              </div>
+              <div class="metric">
+                <strong>კონტროლი</strong>
+                <span>ნახეთ მეტი</span>
+              </div>
+              <div class="metric">
+                <strong>ზრდა</strong>
+                <span>იმუშავეთ უკეთ</span>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section id="services">
+        <div class="container">
+          <div class="section-head">
+            <h2>მარტივი ტექნოლოგია რეალური ბიზნესისთვის.</h2>
+            <p>
+              თქვენ არ გჭირდებათ AI-ის ან პროგრამების ცოდნა. საკმარისია იცოდეთ, რა არის ნელი, გაუგებარი ან რთულად გასაკონტროლებელი. ჩვენ ამას მარტივ გადაწყვეტად ვაქცევთ.
+            </p>
+          </div>
+
+          <div class="cards">
+            <article class="card featured">
+              <div class="icon green">AI</div>
+              <h3>AI ასისტენტები</h3>
+              <p>
+                AI-ს შეუძლია კითხვებზე პასუხი, დოკუმენტების წაკითხვა, რეპორტების მომზადება და საჭირო ინფორმაციის სწრაფად მოძებნა.
+              </p>
+            </article>
+            <article class="card">
+              <div class="icon">A</div>
+              <h3>ავტომატიზაცია</h3>
+              <p>
+                განმეორებად საქმეებს ვაკავშირებთ ისე, რომ ისინი ავტომატურად შესრულდეს. გუნდი ნაკლებ დროს ხარჯავს კოპირებაზე, შემოწმებაზე და ხელით მუშაობაზე.
+              </p>
+            </article>
+            <article class="card">
+              <div class="icon green">S</div>
+              <h3>ბიზნეს პროგრამები</h3>
+              <p>
+                ვქმნით მარტივ სისტემებს თქვენი კომპანიისთვის: დეშბორდები, შეკვეთები, მარაგები, თანამშრომლების სამუშაო, დავალებები, რეპორტები და სხვა.
+              </p>
+            </article>
+            <article class="card">
+              <div class="icon">C</div>
+              <h3>ჭკვიანი კამერები</h3>
+              <p>
+                კამერებს და პროგრამას ვამატებთ მაშინ, როცა გჭირდებათ მაღაზიის, ოფისის, საწყობის ან სამშენებლო ობიექტის უკეთ კონტროლი.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="benefits" class="band">
+        <div class="container split">
+          <div>
+            <div class="eyebrow">სარგებელი მარტივია</div>
+            <h2>თქვენი გუნდი მეტ საქმეს აკეთებს ნაკლები სტრესით.</h2>
+            <p class="wide-copy">
+              Pulsar გეხმარებათ ნელი ხელით სამუშაოს შემცირებაში და მნიშვნელოვანი ინფორმაციის სწრაფად დანახვაში. შედეგად გაქვთ უკეთესი კონტროლი, ნაკლები შეცდომა და უფრო მარტივად სამართავი ბიზნესი.
+            </p>
+            <div class="benefit-list">
+              <div class="benefit">
+                <div class="check">✓</div>
+                <div>
+                  <strong>დაზოგეთ დრო ყოველდღე</strong>
+                  <span>რეპორტები, შემოწმებები, შეხსენებები და განახლებები შეიძლება ავტომატურად შესრულდეს.</span>
+                </div>
+              </div>
+              <div class="benefit">
+                <div class="check">✓</div>
+                <div>
+                  <strong>იცოდეთ რა ხდება ბიზნესში</strong>
+                  <span>მენეჯერები ხედავენ სამუშაოს, პრობლემებს და რიცხვებს ერთ მარტივ ადგილას.</span>
+                </div>
+              </div>
+              <div class="benefit">
+                <div class="check">✓</div>
+                <div>
+                  <strong>მიიღეთ უკეთესი გადაწყვეტილებები</strong>
+                  <span>იღებთ გასაგებ ინფორმაციას მანამ, სანამ პრობლემა ძვირი გახდება.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="simple-panel">
+            <h3>Pulsar-მდე და Pulsar-ის შემდეგ</h3>
+            <div class="bar-list">
+              <div class="bar-row">
+                <span><b>ხელით სამუშაო</b><b>ნაკლები</b></span>
+                <div class="bar"><i style="width: 34%"></i></div>
+              </div>
+              <div class="bar-row">
+                <span><b>ბიზნეს კონტროლი</b><b>მეტი</b></span>
+                <div class="bar purple"><i style="width: 86%"></i></div>
+              </div>
+              <div class="bar-row">
+                <span><b>სასარგებლო ინფორმაცია</b><b>სწრაფი</b></span>
+                <div class="bar"><i style="width: 78%"></i></div>
+              </div>
+              <div class="bar-row">
+                <span><b>გუნდის ფოკუსი</b><b>უკეთესი</b></span>
+                <div class="bar purple"><i style="width: 82%"></i></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="industries">
+        <div class="container">
+          <div class="section-head center">
+            <h2>სასარგებლოა კომპანიებისთვის, რომლებსაც ყოველდღიური ოპერაციები აქვთ.</h2>
+            <p>
+              თუ თქვენს ბიზნესს აქვს გუნდი, დავალებები, მომხმარებლები, მარაგები, ობიექტები, კამერები, რეპორტები ან განმეორებადი საქმე, Pulsar დაგეხმარებათ.
+            </p>
+          </div>
+
+          <div class="industries">
+            <article class="industry">
+              <div class="icon green">R</div>
+              <h3>საცალო მაღაზიები</h3>
+              <ul>
+                <li>აკონტროლეთ მაღაზიის მუშაობა</li>
+                <li>აკონტროლეთ მარაგი და გაყიდვების აქტივობა</li>
+                <li>შეამცირეთ ხელით მომზადებული რეპორტები</li>
+                <li>გამოიყენეთ კამერები უკეთესი ხილვადობისთვის</li>
+              </ul>
+            </article>
+            <article class="industry">
+              <div class="icon">C</div>
+              <h3>სამშენებლო კომპანიები</h3>
+              <ul>
+                <li>აკონტროლეთ ობიექტის პროგრესი</li>
+                <li>მართეთ დავალებები და გუნდი</li>
+                <li>მიიღეთ მარტივი განახლებები პროექტებიდან</li>
+                <li>გამოიყენეთ კამერები მნიშვნელოვანი ზონების შესამოწმებლად</li>
+              </ul>
+            </article>
+            <article class="industry">
+              <div class="icon green">B</div>
+              <h3>სერვის კომპანიები</h3>
+              <ul>
+                <li>დააავტომატეთ მომხმარებელთან კომუნიკაცია</li>
+                <li>დაალაგეთ გუნდის დავალებები</li>
+                <li>მოამზადეთ რეპორტები უფრო სწრაფად</li>
+                <li>დააკავშირეთ ის ხელსაწყოები, რომლებსაც უკვე იყენებთ</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="band">
+        <div class="container">
+          <div class="section-head">
+            <h2>როგორ ვმუშაობთ თქვენთან.</h2>
+            <p>
+              რთული ტექნოლოგიით არ ვიწყებთ. ვიწყებთ თქვენი ბიზნეს პრობლემით და ვირჩევთ ყველაზე მარტივ გზას მის მოსაგვარებლად.
+            </p>
+          </div>
+
+          <div class="steps">
+            <article class="step">
+              <h3>გისმენთ</h3>
+              <p>გვიყვებით, რა გართმევთ ბევრ დროს ან რისი კონტროლია რთული.</p>
+            </article>
+            <article class="step">
+              <h3>ვგეგმავთ</h3>
+              <p>გაჩვენებთ მარტივ გადაწყვეტას გასაგები ენით, სანამ რამეს ავაშენებთ.</p>
+            </article>
+            <article class="step">
+              <h3>ვქმნით</h3>
+              <p>ვაკეთებთ AI-ს, ავტომატიზაციას, პროგრამას ან კამერების სისტემას, რაც თქვენს გუნდს სჭირდება.</p>
+            </article>
+            <article class="step">
+              <h3>გეხმარებით</h3>
+              <p>ვასწავლით გუნდს გამოყენებას და ვაუმჯობესებთ სისტემას, როცა ბიზნესი იზრდება.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="container split">
+          <div>
+            <div class="eyebrow">რატომ Pulsar</div>
+            <h2>იღებთ ტექნოლოგიას, რომელიც პრაქტიკულია.</h2>
+            <p class="wide-copy">
+              ჩვენი მიზანი არ არის უბრალოდ თანამედროვე სიტყვები. ჩვენი მიზანია, თქვენი ბიზნესი უკეთ მუშაობდეს: უფრო სწრაფი საქმე, უფრო გასაგები ინფორმაცია და ნაკლები დაკარგული დრო.
+            </p>
+          </div>
+          <div class="simple-panel">
+            <h3>კარგია, როცა გინდათ:</h3>
+            <div class="benefit-list">
+              <div class="benefit">
+                <div class="check">✓</div>
+                <div>
+                  <strong>ნაკლები დრო დაკარგოთ რუტინულ საქმეზე</strong>
+                  <span>მოსაწყენ და განმეორებად ნაწილს ვაავტომატებთ.</span>
+                </div>
+              </div>
+              <div class="benefit">
+                <div class="check">✓</div>
+                <div>
+                  <strong>ბიზნესი უფრო ნათლად დაინახოთ</strong>
+                  <span>მნიშვნელოვან ინფორმაციას ერთ ადგილას ვათავსებთ.</span>
+                </div>
+              </div>
+              <div class="benefit">
+                <div class="check">✓</div>
+                <div>
+                  <strong>გაიზარდოთ ქაოსის გარეშე</strong>
+                  <span>ვქმნით სისტემებს, რომლებიც გუნდს უკეთ მუშაობაში ეხმარება.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="cta">
+        <div class="container cta-box">
+          <div>
+            <h2>გვითხარით, რა ანელებს თქვენს ბიზნესს.</h2>
+            <p>
+              Pulsar დაგეხმარებათ იპოვოთ მარტივი ტექნოლოგიური გადაწყვეტა, რომელიც დაზოგავს დროს, მოგცემთ კონტროლს და თქვენს გუნდს უკეთ მუშაობაში დაეხმარება.
+            </p>
+          </div>
+          <a class="button" href="mailto:info@pulsartech.ge">დაგვიკავშირდით</a>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container footer-grid">
+        <div class="footer-brand">
+          <img src="pulsar-logo-cropped.png" alt="Pulsar ლოგო">
+          <div>
+            <strong>LLC Pulsar</strong>
+            <span>AI, ავტომატიზაცია და ბიზნეს პროგრამები</span>
+          </div>
+        </div>
+        <div class="footer-contact">
+          <a href="tel:+995599992030">+995 599992030</a>
+          <a href="mailto:info@pulsartech.ge">info@pulsartech.ge</a>
+          <a href="en/">English</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,1007 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Pulsar | AI, Automation, and Business Software</title>
+    <link rel="canonical" href="/en/">
+    <link rel="alternate" hreflang="ka" href="/">
+    <link rel="alternate" hreflang="en" href="/en/">
+    <link rel="alternate" hreflang="x-default" href="/">
+    <meta
+      name="description"
+      content="Pulsar helps companies save time, reduce mistakes, and control daily work with AI, automation, software, and smart camera systems."
+    >
+    <style>
+      :root {
+        --purple: #7c3aed;
+        --green: #16c34a;
+        --black: #0f1115;
+        --graphite: #475467;
+        --white: #ffffff;
+        --light: #f5f7fa;
+        --divider: #d9dee5;
+        --muted: #98a2b3;
+        --shadow: 0 22px 60px rgba(15, 17, 21, 0.1);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        color: var(--black);
+        background: var(--white);
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        line-height: 1.5;
+      }
+
+      img {
+        display: block;
+        max-width: 100%;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .container {
+        width: min(1120px, calc(100% - 40px));
+        margin: 0 auto;
+      }
+
+      .nav {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        background: rgba(255, 255, 255, 0.94);
+        border-bottom: 1px solid var(--divider);
+        backdrop-filter: blur(14px);
+      }
+
+      .nav-inner {
+        min-height: 76px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-size: 22px;
+        font-weight: 850;
+      }
+
+      .brand img {
+        width: 104px;
+        height: 42px;
+        object-fit: contain;
+      }
+
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 24px;
+        color: var(--graphite);
+        font-size: 15px;
+        font-weight: 700;
+      }
+
+      .button {
+        min-height: 46px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 20px;
+        border-radius: 8px;
+        border: 1px solid transparent;
+        background: var(--purple);
+        color: var(--white);
+        font-size: 15px;
+        font-weight: 850;
+        box-shadow: 0 14px 30px rgba(124, 58, 237, 0.22);
+        white-space: nowrap;
+      }
+
+      .button.secondary {
+        background: var(--white);
+        color: var(--black);
+        border-color: var(--divider);
+        box-shadow: none;
+      }
+
+      .hero {
+        min-height: calc(100vh - 76px);
+        display: grid;
+        align-items: center;
+        padding: 72px 0 84px;
+        background: var(--light);
+      }
+
+      .hero-grid,
+      .split {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(340px, 470px);
+        gap: 56px;
+        align-items: center;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 18px;
+        color: var(--purple);
+        font-size: 14px;
+        font-weight: 850;
+      }
+
+      .eyebrow::before {
+        content: "";
+        width: 9px;
+        height: 9px;
+        border-radius: 50%;
+        background: var(--green);
+      }
+
+      h1,
+      h2,
+      h3,
+      p {
+        margin-top: 0;
+      }
+
+      h1 {
+        max-width: 700px;
+        margin-bottom: 20px;
+        font-size: clamp(38px, 4.7vw, 60px);
+        line-height: 1.08;
+        letter-spacing: 0;
+      }
+
+      .hero-copy {
+        max-width: 680px;
+        margin-bottom: 30px;
+        color: var(--graphite);
+        font-size: 20px;
+      }
+
+      .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 14px;
+        margin-bottom: 32px;
+      }
+
+      .proof-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+        color: var(--graphite);
+        font-size: 15px;
+        font-weight: 750;
+      }
+
+      .proof-row span {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .proof-row span::before {
+        content: "";
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--green);
+      }
+
+      .work-card {
+        border: 1px solid var(--divider);
+        border-radius: 8px;
+        background: var(--white);
+        box-shadow: var(--shadow);
+        overflow: hidden;
+      }
+
+      .work-card-head {
+        padding: 20px;
+        border-bottom: 1px solid var(--divider);
+      }
+
+      .work-card-head strong {
+        display: block;
+        margin-bottom: 6px;
+        font-size: 19px;
+      }
+
+      .work-card-head span {
+        color: var(--graphite);
+      }
+
+      .work-list {
+        display: grid;
+        gap: 12px;
+        padding: 20px;
+      }
+
+      .work-item {
+        display: grid;
+        grid-template-columns: 40px 1fr auto;
+        gap: 12px;
+        align-items: center;
+        padding: 14px;
+        border: 1px solid var(--divider);
+        border-radius: 8px;
+      }
+
+      .work-icon {
+        width: 40px;
+        height: 40px;
+        display: grid;
+        place-items: center;
+        border-radius: 8px;
+        background: rgba(124, 58, 237, 0.1);
+        color: var(--purple);
+        font-weight: 900;
+      }
+
+      .work-item strong {
+        display: block;
+        margin-bottom: 2px;
+      }
+
+      .work-item span {
+        color: var(--graphite);
+        font-size: 14px;
+      }
+
+      .tag {
+        padding: 6px 10px;
+        border-radius: 999px;
+        background: rgba(22, 195, 74, 0.12);
+        color: var(--green);
+        font-size: 13px;
+        font-weight: 850;
+      }
+
+      .card-metrics {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1px;
+        background: var(--divider);
+      }
+
+      .metric {
+        padding: 18px;
+        background: var(--white);
+      }
+
+      .metric strong {
+        display: block;
+        margin-bottom: 4px;
+        font-size: 21px;
+      }
+
+      .metric span {
+        color: var(--graphite);
+        font-size: 13px;
+        font-weight: 750;
+      }
+
+      section {
+        padding: 88px 0;
+      }
+
+      .band {
+        background: var(--light);
+      }
+
+      .section-head {
+        max-width: 760px;
+        margin-bottom: 38px;
+      }
+
+      .section-head.center {
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+      }
+
+      h2 {
+        margin-bottom: 14px;
+        font-size: clamp(32px, 4vw, 48px);
+        line-height: 1.05;
+        letter-spacing: 0;
+      }
+
+      .section-head p,
+      .wide-copy {
+        color: var(--graphite);
+        font-size: 19px;
+      }
+
+      .cards {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 18px;
+      }
+
+      .card {
+        min-height: 250px;
+        padding: 26px;
+        border: 1px solid var(--divider);
+        border-radius: 8px;
+        background: var(--white);
+      }
+
+      .card.featured {
+        background: var(--black);
+        color: var(--white);
+        border-color: var(--black);
+      }
+
+      .icon {
+        width: 46px;
+        height: 46px;
+        display: grid;
+        place-items: center;
+        margin-bottom: 20px;
+        border-radius: 8px;
+        background: var(--purple);
+        color: var(--white);
+        font-weight: 900;
+      }
+
+      .icon.green {
+        background: var(--green);
+      }
+
+      .card h3 {
+        margin-bottom: 10px;
+        font-size: 22px;
+        line-height: 1.18;
+      }
+
+      .card p {
+        color: var(--graphite);
+        font-size: 16px;
+      }
+
+      .card.featured p {
+        color: #d9dee5;
+      }
+
+      .benefit-list {
+        display: grid;
+        gap: 16px;
+        margin-top: 28px;
+      }
+
+      .benefit {
+        display: grid;
+        grid-template-columns: 34px 1fr;
+        gap: 14px;
+        align-items: start;
+      }
+
+      .check {
+        width: 34px;
+        height: 34px;
+        display: grid;
+        place-items: center;
+        border-radius: 50%;
+        background: rgba(22, 195, 74, 0.12);
+        color: var(--green);
+        font-weight: 900;
+      }
+
+      .benefit strong {
+        display: block;
+        margin-bottom: 3px;
+        font-size: 18px;
+      }
+
+      .benefit span {
+        color: var(--graphite);
+      }
+
+      .simple-panel {
+        padding: 28px;
+        border: 1px solid var(--divider);
+        border-radius: 8px;
+        background: var(--white);
+        box-shadow: var(--shadow);
+      }
+
+      .simple-panel h3 {
+        margin-bottom: 18px;
+        font-size: 24px;
+      }
+
+      .bar-list {
+        display: grid;
+        gap: 16px;
+      }
+
+      .bar-row {
+        display: grid;
+        gap: 8px;
+      }
+
+      .bar-row span {
+        display: flex;
+        justify-content: space-between;
+        color: var(--graphite);
+        font-size: 14px;
+        font-weight: 750;
+      }
+
+      .bar {
+        height: 12px;
+        border-radius: 999px;
+        background: var(--light);
+        overflow: hidden;
+      }
+
+      .bar i {
+        display: block;
+        height: 100%;
+        border-radius: inherit;
+        background: var(--green);
+      }
+
+      .bar.purple i {
+        background: var(--purple);
+      }
+
+      .industries {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1px;
+        overflow: hidden;
+        border: 1px solid var(--divider);
+        border-radius: 8px;
+        background: var(--divider);
+      }
+
+      .industry {
+        min-height: 300px;
+        padding: 30px;
+        background: var(--white);
+      }
+
+      .industry ul {
+        display: grid;
+        gap: 12px;
+        margin: 22px 0 0;
+        padding: 0;
+        list-style: none;
+        color: var(--graphite);
+      }
+
+      .industry li {
+        position: relative;
+        padding-left: 20px;
+      }
+
+      .industry li::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 10px;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--green);
+      }
+
+      .steps {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 18px;
+        counter-reset: step;
+      }
+
+      .step {
+        padding: 26px;
+        border-top: 4px solid var(--purple);
+        border-radius: 8px;
+        background: var(--white);
+        counter-increment: step;
+      }
+
+      .step::before {
+        content: "0" counter(step);
+        display: block;
+        margin-bottom: 18px;
+        color: var(--muted);
+        font-weight: 900;
+      }
+
+      .step h3 {
+        font-size: 21px;
+      }
+
+      .step p {
+        color: var(--graphite);
+      }
+
+      .cta {
+        padding: 74px 0;
+        background: var(--black);
+        color: var(--white);
+      }
+
+      .cta-box {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 30px;
+        align-items: center;
+      }
+
+      .cta p {
+        max-width: 680px;
+        margin-bottom: 0;
+        color: #d9dee5;
+        font-size: 19px;
+      }
+
+      footer {
+        padding: 38px 0;
+        border-top: 1px solid var(--divider);
+      }
+
+      .footer-grid {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 24px;
+        align-items: center;
+      }
+
+      .footer-brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .footer-brand img {
+        width: 104px;
+        height: 38px;
+        object-fit: contain;
+      }
+
+      .footer-brand strong {
+        display: block;
+      }
+
+      .footer-brand span,
+      .footer-contact {
+        color: var(--graphite);
+      }
+
+      .footer-contact {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        gap: 16px;
+        font-weight: 750;
+      }
+
+      @media (max-width: 980px) {
+        .nav-links {
+          display: none;
+        }
+
+        .hero-grid,
+        .split,
+        .cta-box,
+        .footer-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .cards,
+        .steps {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .industries {
+          grid-template-columns: 1fr;
+        }
+
+        .simple-panel,
+        .work-card {
+          max-width: 560px;
+        }
+
+        .footer-contact {
+          justify-content: flex-start;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .container {
+          width: min(100% - 28px, 1120px);
+        }
+
+        .brand img {
+          width: 92px;
+        }
+
+        section,
+        .hero {
+          padding: 62px 0;
+        }
+
+        .hero-copy,
+        .section-head p,
+        .wide-copy,
+        .cta p {
+          font-size: 18px;
+        }
+
+        h1 {
+          font-size: 38px;
+          line-height: 1.08;
+        }
+
+        .hero-actions,
+        .hero-actions .button,
+        .cta .button {
+          width: 100%;
+        }
+
+        .cards,
+        .steps,
+        .card-metrics {
+          grid-template-columns: 1fr;
+        }
+
+        .work-item {
+          grid-template-columns: 40px 1fr;
+        }
+
+        .tag {
+          grid-column: 1 / -1;
+          justify-self: start;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="nav">
+      <div class="container nav-inner">
+        <a class="brand" href="#top" aria-label="Pulsar home">
+          <img src="../pulsar-logo-cropped.png" alt="Pulsar logo">
+        </a>
+        <nav class="nav-links" aria-label="Main navigation">
+          <a href="#services">Services</a>
+          <a href="#benefits">Benefits</a>
+          <a href="#industries">Industries</a>
+          <a href="#contact">Contact</a>
+          <a href="../">ქართული</a>
+        </nav>
+        <a class="button" href="mailto:info@pulsartech.ge">Talk to us</a>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="container hero-grid">
+          <div>
+            <div class="eyebrow">AI, automation, software, and smart cameras</div>
+            <h1>We make your business easier to run.</h1>
+            <p class="hero-copy">
+              Pulsar helps companies save time, reduce mistakes, and control daily work. We build simple technology that your team can actually use.
+            </p>
+            <div class="hero-actions">
+              <a class="button" href="tel:+995599992030">Call Pulsar</a>
+              <a class="button secondary" href="#services">See how we help</a>
+            </div>
+            <div class="proof-row">
+              <span>Less manual work</span>
+              <span>Clearer control</span>
+              <span>Faster decisions</span>
+            </div>
+          </div>
+
+          <aside class="work-card" aria-label="Business work preview">
+            <div class="work-card-head">
+              <strong>What Pulsar can fix</strong>
+              <span>Daily problems become simple steps.</span>
+            </div>
+            <div class="work-list">
+              <div class="work-item">
+                <div class="work-icon">1</div>
+                <div>
+                  <strong>Reports take too long</strong>
+                  <span>We make them automatic.</span>
+                </div>
+                <div class="tag">Saved</div>
+              </div>
+              <div class="work-item">
+                <div class="work-icon">2</div>
+                <div>
+                  <strong>Work is hard to track</strong>
+                  <span>We show it in one place.</span>
+                </div>
+                <div class="tag">Clear</div>
+              </div>
+              <div class="work-item">
+                <div class="work-icon">3</div>
+                <div>
+                  <strong>People repeat the same tasks</strong>
+                  <span>We automate the routine.</span>
+                </div>
+                <div class="tag">Fast</div>
+              </div>
+            </div>
+            <div class="card-metrics">
+              <div class="metric">
+                <strong>Time</strong>
+                <span>Save hours</span>
+              </div>
+              <div class="metric">
+                <strong>Control</strong>
+                <span>See more</span>
+              </div>
+              <div class="metric">
+                <strong>Growth</strong>
+                <span>Work better</span>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section id="services">
+        <div class="container">
+          <div class="section-head">
+            <h2>Simple technology for real business work.</h2>
+            <p>
+              You do not need to know AI or software. You only need to know what is slow, confusing, or hard to control. We turn that into a clear solution.
+            </p>
+          </div>
+
+          <div class="cards">
+            <article class="card featured">
+              <div class="icon green">AI</div>
+              <h3>AI helpers</h3>
+              <p>
+                AI can answer questions, read documents, prepare reports, and help your team find information faster.
+              </p>
+            </article>
+            <article class="card">
+              <div class="icon">A</div>
+              <h3>Automation</h3>
+              <p>
+                We connect repeated tasks so they happen automatically. Your team spends less time clicking, copying, and checking.
+              </p>
+            </article>
+            <article class="card">
+              <div class="icon green">S</div>
+              <h3>Business software</h3>
+              <p>
+                We build simple systems for your company: dashboards, orders, stock, staff work, tasks, reports, and more.
+              </p>
+            </article>
+            <article class="card">
+              <div class="icon">C</div>
+              <h3>Smart cameras</h3>
+              <p>
+                We add cameras and software when you need better control of stores, offices, warehouses, or construction sites.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="benefits" class="band">
+        <div class="container split">
+          <div>
+            <div class="eyebrow">The benefit is simple</div>
+            <h2>Your team gets more done with less stress.</h2>
+            <p class="wide-copy">
+              Pulsar helps you remove slow manual work and see important information faster. This means better control, fewer mistakes, and a business that is easier to manage.
+            </p>
+            <div class="benefit-list">
+              <div class="benefit">
+                <div class="check">✓</div>
+                <div>
+                  <strong>Save time every day</strong>
+                  <span>Reports, checks, reminders, and updates can happen automatically.</span>
+                </div>
+              </div>
+              <div class="benefit">
+                <div class="check">✓</div>
+                <div>
+                  <strong>Know what is happening</strong>
+                  <span>Managers can see work, problems, and numbers in one clear place.</span>
+                </div>
+              </div>
+              <div class="benefit">
+                <div class="check">✓</div>
+                <div>
+                  <strong>Make better decisions</strong>
+                  <span>You get clear information before problems become expensive.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="simple-panel">
+            <h3>Before and after Pulsar</h3>
+            <div class="bar-list">
+              <div class="bar-row">
+                <span><b>Manual work</b><b>Lower</b></span>
+                <div class="bar"><i style="width: 34%"></i></div>
+              </div>
+              <div class="bar-row">
+                <span><b>Business control</b><b>Higher</b></span>
+                <div class="bar purple"><i style="width: 86%"></i></div>
+              </div>
+              <div class="bar-row">
+                <span><b>Useful information</b><b>Faster</b></span>
+                <div class="bar"><i style="width: 78%"></i></div>
+              </div>
+              <div class="bar-row">
+                <span><b>Team focus</b><b>Better</b></span>
+                <div class="bar purple"><i style="width: 82%"></i></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="industries">
+        <div class="container">
+          <div class="section-head center">
+            <h2>Useful for companies that have daily operations.</h2>
+            <p>
+              If your business has people, tasks, customers, stock, sites, cameras, reports, or repeated work, Pulsar can help.
+            </p>
+          </div>
+
+          <div class="industries">
+            <article class="industry">
+              <div class="icon green">R</div>
+              <h3>Retail shops</h3>
+              <ul>
+                <li>Control store work</li>
+                <li>Track stock and sales activity</li>
+                <li>Reduce repeated manual reports</li>
+                <li>Use cameras for better visibility</li>
+              </ul>
+            </article>
+            <article class="industry">
+              <div class="icon">C</div>
+              <h3>Construction companies</h3>
+              <ul>
+                <li>Track site progress</li>
+                <li>Control tasks and workers</li>
+                <li>Get clear updates from projects</li>
+                <li>Use cameras to check key areas</li>
+              </ul>
+            </article>
+            <article class="industry">
+              <div class="icon green">B</div>
+              <h3>Service businesses</h3>
+              <ul>
+                <li>Automate customer follow-up</li>
+                <li>Organize team tasks</li>
+                <li>Prepare reports faster</li>
+                <li>Connect tools your team already uses</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="band">
+        <div class="container">
+          <div class="section-head">
+            <h2>How we work with you.</h2>
+            <p>
+              We do not start with complicated technology. We start with your business problem and choose the simplest way to solve it.
+            </p>
+          </div>
+
+          <div class="steps">
+            <article class="step">
+              <h3>We listen</h3>
+              <p>You tell us what takes too much time or feels hard to control.</p>
+            </article>
+            <article class="step">
+              <h3>We plan</h3>
+              <p>We show a simple solution in clear words before anything is built.</p>
+            </article>
+            <article class="step">
+              <h3>We build</h3>
+              <p>We create the AI, automation, software, or camera setup your team needs.</p>
+            </article>
+            <article class="step">
+              <h3>We support</h3>
+              <p>We help your people use it and improve it as your business grows.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="container split">
+          <div>
+            <div class="eyebrow">Why Pulsar</div>
+            <h2>You get technology that feels practical.</h2>
+            <p class="wide-copy">
+              Our goal is not to make your business sound modern. Our goal is to make your business run better: faster work, clearer information, and less wasted time.
+            </p>
+          </div>
+          <div class="simple-panel">
+            <h3>Good fit when you want to:</h3>
+            <div class="benefit-list">
+              <div class="benefit">
+                <div class="check">✓</div>
+                <div>
+                  <strong>Stop losing time on routine work</strong>
+                  <span>We automate the boring parts.</span>
+                </div>
+              </div>
+              <div class="benefit">
+                <div class="check">✓</div>
+                <div>
+                  <strong>See the business more clearly</strong>
+                  <span>We put important information in one place.</span>
+                </div>
+              </div>
+              <div class="benefit">
+                <div class="check">✓</div>
+                <div>
+                  <strong>Grow without chaos</strong>
+                  <span>We build systems that help your team work in a better way.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="cta">
+        <div class="container cta-box">
+          <div>
+            <h2>Tell us what is slowing your business down.</h2>
+            <p>
+              Pulsar will help you find a simple technology solution that saves time, gives you control, and helps your team work better.
+            </p>
+          </div>
+          <a class="button" href="mailto:info@pulsartech.ge">Contact Pulsar</a>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container footer-grid">
+        <div class="footer-brand">
+          <img src="../pulsar-logo-cropped.png" alt="Pulsar logo">
+          <div>
+            <strong>LLC Pulsar</strong>
+            <span>AI, automation, and business software</span>
+          </div>
+        </div>
+        <div class="footer-contact">
+          <a href="tel:+995599992030">+995 599992030</a>
+          <a href="mailto:info@pulsartech.ge">info@pulsartech.ge</a>
+          <a href="../">ქართული</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
