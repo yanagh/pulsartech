@@ -3,7 +3,9 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Pulsar | AI Solutions for Business</title>
+    <title>The best AI solutions for your business | Pulsar</title>
+    <meta name="title" content="The best AI solutions for your business.">
+    <link rel="icon" type="image/png" href="../favicon.png">
     <link rel="canonical" href="/en/">
     <link rel="alternate" hreflang="ka" href="/">
     <link rel="alternate" hreflang="en" href="/en/">
@@ -12,6 +14,12 @@
       name="description"
       content="Pulsar helps businesses optimize operations, improve efficiency, reduce mistakes, and improve daily business processes with AI technologies."
     >
+    <meta property="og:title" content="The best AI solutions for your business.">
+    <meta property="og:description" content="We help businesses optimize operations, increase efficiency, reduce mistakes, and improve daily business processes.">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="The best AI solutions for your business.">
+    <meta name="twitter:description" content="We help businesses optimize operations, increase efficiency, reduce mistakes, and improve daily business processes.">
     <style>
       :root {
         --purple: #7c3aed;
@@ -399,18 +407,36 @@
 
       .card {
         min-height: 250px;
-        padding: 26px;
+        padding: 18px 18px 24px;
         border: 1px solid var(--divider);
         border-radius: 8px;
-        background: rgba(255, 255, 255, 0.82);
+        background: var(--white);
         box-shadow: 0 18px 45px rgba(15, 17, 21, 0.06);
         backdrop-filter: blur(18px);
+        overflow: hidden;
       }
 
       .card.featured {
-        background: var(--black);
-        color: var(--white);
-        border-color: var(--black);
+        background: var(--white);
+        color: var(--black);
+        border-color: var(--divider);
+      }
+
+      .card-image {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 150px;
+        margin: -6px -6px 20px;
+        border-radius: 8px;
+        background: var(--light);
+        overflow: hidden;
+      }
+
+      .card-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
       }
 
       .card h3 {
@@ -425,7 +451,7 @@
       }
 
       .card.featured p {
-        color: #d9dee5;
+        color: var(--graphite);
       }
 
       .benefit-list {
@@ -845,24 +871,36 @@
 
           <div class="cards">
             <article class="card featured">
+              <div class="card-image">
+                <img src="../ai.png" alt="">
+              </div>
               <h3>AI solutions</h3>
               <p>
                 AI can answer questions, process documents, prepare reports, and find the information you need in seconds.
               </p>
             </article>
             <article class="card">
+              <div class="card-image">
+                <img src="../robots.png" alt="">
+              </div>
               <h3>Robots</h3>
               <p>
                 We connect repetitive tasks and digital processes so they run automatically, without human involvement.
               </p>
             </article>
             <article class="card">
+              <div class="card-image">
+                <img src="../consulting.png" alt="">
+              </div>
               <h3>Tech consulting</h3>
               <p>
                 We help you choose the right digital strategy and build custom systems: dashboards, inventory, task, and reporting platforms.
               </p>
             </article>
             <article class="card">
+              <div class="card-image">
+                <img src="../automation.png" alt="">
+              </div>
               <h3>Automation</h3>
               <p>
                 We connect different software, smart cameras, and sensors into one system, giving you full control of your store, office, warehouse, or site.

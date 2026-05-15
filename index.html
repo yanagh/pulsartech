@@ -3,11 +3,19 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Pulsar | AI, ავტომატიზაცია და ბიზნეს პროგრამები</title>
+    <title>საუკეთესო AI გადაწყვეტები თქვენი ბიზნესისთვის | Pulsar</title>
+    <meta name="title" content="საუკეთესო AI გადაწყვეტები თქვენი ბიზნესისთვის">
     <meta
       name="description"
       content="Pulsar ეხმარება კომპანიებს დროის დაზოგვაში, შეცდომების შემცირებაში და ყოველდღიური სამუშაოს უკეთ კონტროლში AI-ით, ავტომატიზაციით, პროგრამებით და ჭკვიანი კამერებით."
     >
+    <meta property="og:title" content="საუკეთესო AI გადაწყვეტები თქვენი ბიზნესისთვის">
+    <meta property="og:description" content="ვეხმარებით ბიზნესებს ოპტიმიზაციაში, ეფექტურობის გაზრდაში, შეცდომების შემცირებაში და ყოველდღიური ბიზნეს პროცესების გაუმჯობესებაში.">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="საუკეთესო AI გადაწყვეტები თქვენი ბიზნესისთვის">
+    <meta name="twitter:description" content="ვეხმარებით ბიზნესებს ოპტიმიზაციაში, ეფექტურობის გაზრდაში, შეცდომების შემცირებაში და ყოველდღიური ბიზნეს პროცესების გაუმჯობესებაში.">
+    <link rel="icon" type="image/png" href="favicon.png">
     <link rel="canonical" href="/">
     <link rel="alternate" hreflang="ka" href="/">
     <link rel="alternate" hreflang="en" href="/en/">
@@ -399,18 +407,36 @@
 
       .card {
         min-height: 250px;
-        padding: 26px;
+        padding: 18px 18px 24px;
         border: 1px solid var(--divider);
         border-radius: 8px;
-        background: rgba(255, 255, 255, 0.82);
+        background: var(--white);
         box-shadow: 0 18px 45px rgba(15, 17, 21, 0.06);
         backdrop-filter: blur(18px);
+        overflow: hidden;
       }
 
       .card.featured {
-        background: var(--black);
-        color: var(--white);
-        border-color: var(--black);
+        background: var(--white);
+        color: var(--black);
+        border-color: var(--divider);
+      }
+
+      .card-image {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 150px;
+        margin: -6px -6px 20px;
+        border-radius: 8px;
+        background: var(--light);
+        overflow: hidden;
+      }
+
+      .card-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
       }
 
       .card h3 {
@@ -425,7 +451,7 @@
       }
 
       .card.featured p {
-        color: #d9dee5;
+        color: var(--graphite);
       }
 
       .benefit-list {
@@ -845,24 +871,36 @@
 
           <div class="cards">
             <article class="card featured">
+              <div class="card-image">
+                <img src="ai.png" alt="">
+              </div>
               <h3>AI გადაწყვეტები</h3>
               <p>
                 AI-ს შეუძლია კითხვებზე პასუხის გაცემა, დოკუმენტების დამუშავება, რეპორტების მომზადება და საჭირო ინფორმაციის წამებში მოძებნა.
               </p>
             </article>
             <article class="card">
+              <div class="card-image">
+                <img src="robots.png" alt="">
+              </div>
               <h3>რობოტები</h3>
               <p>
                 განმეორებად საქმეებსა და ციფრულ პროცესებს ისე ვაკავშირებთ ერთმანეთთან, რომ ისინი ავტომატურად, ადამიანის ჩარევის გარეშე შესრულდეს.
               </p>
             </article>
             <article class="card">
+              <div class="card-image">
+                <img src="consulting.png" alt="">
+              </div>
               <h3>ტექ კონსალტინგი</h3>
               <p>
                 გეხმარებით სწორი ციფრული სტრატეგიის შერჩევაში და ვქმნით მორგებულ სისტემებს: დეშბორდებს, მარაგების, დავალებებისა და რეპორტინგის პლატფორმებს.
               </p>
             </article>
             <article class="card">
+              <div class="card-image">
+                <img src="automation.png" alt="">
+              </div>
               <h3>ავტომატიზაცია</h3>
               <p>
                 სხვადასხვა პროგრამებს, ჭკვიან კამერებსა და სენსორებს ვაერთიანებთ ერთიან სისტემაში, რაც გაძლევთ მაღაზიის, ოფისის, საწყობის თუ ობიექტის სრულ კონტროლს.
