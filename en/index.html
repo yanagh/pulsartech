@@ -204,7 +204,13 @@
         opacity: 0.82;
       }
 
-      .hero-grid,
+      .hero-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 760px);
+        gap: 28px;
+        align-items: center;
+      }
+
       .split {
         display: grid;
         grid-template-columns: minmax(0, 1fr) minmax(340px, 470px);
@@ -287,68 +293,6 @@
         background: var(--green);
       }
 
-      .work-card {
-        border: 1px solid rgba(255, 255, 255, 0.18);
-        border-radius: 8px;
-        background: rgba(255, 255, 255, 0.1);
-        box-shadow: 0 28px 90px rgba(0, 0, 0, 0.26);
-        backdrop-filter: blur(24px);
-        overflow: hidden;
-      }
-
-      .work-card-head {
-        padding: 20px;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.16);
-      }
-
-      .work-card-head strong {
-        display: block;
-        margin-bottom: 6px;
-        font-size: 19px;
-      }
-
-      .work-card-head span {
-        color: rgba(255, 255, 255, 0.7);
-      }
-
-      .work-list {
-        display: grid;
-        gap: 12px;
-        padding: 20px;
-      }
-
-      .work-item {
-        display: grid;
-        grid-template-columns: 40px 1fr auto;
-        gap: 12px;
-        align-items: center;
-        padding: 14px;
-        border: 1px solid rgba(255, 255, 255, 0.16);
-        border-radius: 8px;
-        background: rgba(255, 255, 255, 0.08);
-      }
-
-      .work-icon {
-        width: 40px;
-        height: 40px;
-        display: grid;
-        place-items: center;
-        border-radius: 8px;
-        background: rgba(124, 58, 237, 0.22);
-        color: #c4b5fd;
-        font-weight: 900;
-      }
-
-      .work-item strong {
-        display: block;
-        margin-bottom: 2px;
-      }
-
-      .work-item span {
-        color: rgba(255, 255, 255, 0.68);
-        font-size: 14px;
-      }
-
       .tag {
         padding: 6px 10px;
         border-radius: 999px;
@@ -356,30 +300,6 @@
         color: var(--green);
         font-size: 13px;
         font-weight: 850;
-      }
-
-      .card-metrics {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 1px;
-        background: rgba(255, 255, 255, 0.16);
-      }
-
-      .metric {
-        padding: 18px;
-        background: rgba(255, 255, 255, 0.08);
-      }
-
-      .metric strong {
-        display: block;
-        margin-bottom: 4px;
-        font-size: 21px;
-      }
-
-      .metric span {
-        color: rgba(255, 255, 255, 0.68);
-        font-size: 13px;
-        font-weight: 750;
       }
 
       section {
@@ -764,8 +684,7 @@
           grid-template-columns: 1fr;
         }
 
-        .simple-panel,
-        .work-card {
+        .simple-panel {
           max-width: 560px;
         }
 
@@ -841,17 +760,11 @@
         }
 
         .cards,
-        .steps,
-        .card-metrics {
+        .steps {
           grid-template-columns: 1fr;
         }
 
-        .work-item {
-          grid-template-columns: 40px 1fr;
-        }
-
         .tag {
-          grid-column: 1 / -1;
           justify-self: start;
         }
       }
@@ -898,53 +811,6 @@
               <span>Faster decisions</span>
             </div>
           </div>
-
-          <aside class="work-card" aria-label="Business work preview">
-            <div class="work-card-head">
-              <strong>What Pulsar can fix</strong>
-              <span>Daily problems become simple steps.</span>
-            </div>
-            <div class="work-list">
-              <div class="work-item">
-                <div class="work-icon">1</div>
-                <div>
-                  <strong>Reports take too long</strong>
-                  <span>We make them automatic.</span>
-                </div>
-                <div class="tag">Saved</div>
-              </div>
-              <div class="work-item">
-                <div class="work-icon">2</div>
-                <div>
-                  <strong>Work is hard to track</strong>
-                  <span>We show it in one place.</span>
-                </div>
-                <div class="tag">Clear</div>
-              </div>
-              <div class="work-item">
-                <div class="work-icon">3</div>
-                <div>
-                  <strong>People repeat the same tasks</strong>
-                  <span>We automate the routine.</span>
-                </div>
-                <div class="tag">Fast</div>
-              </div>
-            </div>
-            <div class="card-metrics">
-              <div class="metric">
-                <strong>Time</strong>
-                <span>Save hours</span>
-              </div>
-              <div class="metric">
-                <strong>Control</strong>
-                <span>See more</span>
-              </div>
-              <div class="metric">
-                <strong>Growth</strong>
-                <span>Work better</span>
-              </div>
-            </div>
-          </aside>
         </div>
       </section>
 
