@@ -205,10 +205,33 @@
       }
 
       .hero-grid {
+        position: relative;
         display: grid;
-        grid-template-columns: minmax(0, 760px);
+        grid-template-columns: minmax(0, 860px);
         gap: 28px;
         align-items: center;
+      }
+
+      .hero-visual {
+        position: absolute;
+        right: -130px;
+        top: 50%;
+        width: min(42vw, 610px);
+        transform: translateY(-50%);
+        justify-self: auto;
+        pointer-events: none;
+      }
+
+      .hero-visual img {
+        position: relative;
+        width: 100%;
+        max-height: min(760px, calc(100vh - 120px));
+        height: auto;
+        object-fit: contain;
+        opacity: 1;
+        border: 0;
+        border-radius: 0;
+        box-shadow: none;
       }
 
       .split {
@@ -332,7 +355,7 @@
       }
 
       html[lang="ka"] h1 {
-        max-width: 650px;
+        max-width: 820px;
         font-size: clamp(34px, 4vw, 52px);
         line-height: 1.13;
       }
@@ -672,6 +695,16 @@
           max-width: 560px;
         }
 
+        .hero-visual {
+          position: relative;
+          right: auto;
+          top: auto;
+          transform: none;
+          width: 100%;
+          max-width: 420px;
+          justify-self: start;
+        }
+
         .footer-contact {
           justify-content: flex-start;
         }
@@ -795,6 +828,9 @@
               <span>უფრო სწრაფი გადაწყვეტილებები</span>
             </div>
           </div>
+          <div class="hero-visual" aria-hidden="true">
+            <img src="1.png" alt="">
+          </div>
         </div>
       </section>
 
@@ -811,25 +847,25 @@
             <article class="card featured">
               <h3>AI გადაწყვეტები</h3>
               <p>
-                AI-ს შეუძლია კითხვებზე პასუხი, დოკუმენტების წაკითხვა, რეპორტების მომზადება და საჭირო ინფორმაციის სწრაფად მოძებნა.
+                AI-ს შეუძლია კითხვებზე პასუხის გაცემა, დოკუმენტების დამუშავება, რეპორტების მომზადება და საჭირო ინფორმაციის წამებში მოძებნა.
               </p>
             </article>
             <article class="card">
               <h3>რობოტები</h3>
               <p>
-                განმეორებად საქმეებს ვაკავშირებთ ისე, რომ ისინი ავტომატურად შესრულდეს. გუნდი ნაკლებ დროს ხარჯავს კოპირებაზე, შემოწმებაზე და ხელით მუშაობაზე.
+                განმეორებად საქმეებსა და ციფრულ პროცესებს ისე ვაკავშირებთ ერთმანეთთან, რომ ისინი ავტომატურად, ადამიანის ჩარევის გარეშე შესრულდეს.
               </p>
             </article>
             <article class="card">
-              <h3>ტექ ქონსალთინგი</h3>
+              <h3>ტექ კონსალტინგი</h3>
               <p>
-                ვქმნით მარტივ სისტემებს თქვენი კომპანიისთვის: დეშბორდები, შეკვეთები, მარაგები, თანამშრომლების სამუშაო, დავალებები, რეპორტები და სხვა.
+                გეხმარებით სწორი ციფრული სტრატეგიის შერჩევაში და ვქმნით მორგებულ სისტემებს: დეშბორდებს, მარაგების, დავალებებისა და რეპორტინგის პლატფორმებს.
               </p>
             </article>
             <article class="card">
               <h3>ავტომატიზაცია</h3>
               <p>
-                კამერებს და პროგრამას ვამატებთ მაშინ, როცა გჭირდებათ მაღაზიის, ოფისის, საწყობის ან სამშენებლო ობიექტის უკეთ კონტროლი.
+                სხვადასხვა პროგრამებს, ჭკვიან კამერებსა და სენსორებს ვაერთიანებთ ერთიან სისტემაში, რაც გაძლევთ მაღაზიის, ოფისის, საწყობის თუ ობიექტის სრულ კონტროლს.
               </p>
             </article>
           </div>
@@ -877,7 +913,7 @@
                 <div class="bar"><i style="width: 34%"></i></div>
               </div>
               <div class="bar-row">
-                <span><b>ბიზნეს კონტროლი</b><b>მეტი</b></span>
+                <span><b>ბიზნესის კონტროლი</b><b>მეტი</b></span>
                 <div class="bar purple"><i style="width: 86%"></i></div>
               </div>
               <div class="bar-row">

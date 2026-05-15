@@ -3,14 +3,14 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Pulsar | AI, Automation, and Business Software</title>
+    <title>Pulsar | AI Solutions for Business</title>
     <link rel="canonical" href="/en/">
     <link rel="alternate" hreflang="ka" href="/">
     <link rel="alternate" hreflang="en" href="/en/">
     <link rel="alternate" hreflang="x-default" href="/">
     <meta
       name="description"
-      content="Pulsar helps companies save time, reduce mistakes, and control daily work with AI, automation, software, and smart camera systems."
+      content="Pulsar helps businesses optimize operations, improve efficiency, reduce mistakes, and improve daily business processes with AI technologies."
     >
     <style>
       :root {
@@ -205,10 +205,33 @@
       }
 
       .hero-grid {
+        position: relative;
         display: grid;
-        grid-template-columns: minmax(0, 760px);
+        grid-template-columns: minmax(0, 860px);
         gap: 28px;
         align-items: center;
+      }
+
+      .hero-visual {
+        position: absolute;
+        right: -130px;
+        top: 50%;
+        width: min(42vw, 610px);
+        transform: translateY(-50%);
+        justify-self: auto;
+        pointer-events: none;
+      }
+
+      .hero-visual img {
+        position: relative;
+        width: 100%;
+        max-height: min(760px, calc(100vh - 120px));
+        height: auto;
+        object-fit: contain;
+        opacity: 1;
+        border: 0;
+        border-radius: 0;
+        box-shadow: none;
       }
 
       .split {
@@ -672,6 +695,16 @@
           max-width: 560px;
         }
 
+        .hero-visual {
+          position: relative;
+          right: auto;
+          top: auto;
+          transform: none;
+          width: 100%;
+          max-width: 420px;
+          justify-self: start;
+        }
+
         .footer-contact {
           justify-content: flex-start;
         }
@@ -781,9 +814,9 @@
         <div class="container hero-grid">
           <div>
             <div class="eyebrow">AI, automation, software, and smart cameras</div>
-            <h1>We make your business easier to run.</h1>
+            <h1>The best AI solutions for your business.</h1>
             <p class="hero-copy">
-              We help companies save time, reduce mistakes, and control daily work. We build simple technology that your team can actually use.
+              We help businesses optimize operations, increase efficiency, reduce mistakes, and improve daily business processes.
             </p>
             <div class="hero-actions">
               <a class="button" href="tel:+995599992030">Call us</a>
@@ -795,13 +828,16 @@
               <span>Faster decisions</span>
             </div>
           </div>
+          <div class="hero-visual" aria-hidden="true">
+            <img src="../1.png" alt="">
+          </div>
         </div>
       </section>
 
       <section id="services">
         <div class="container">
           <div class="section-head">
-            <h2>Simple technology for real business work.</h2>
+            <h2>AI technologies for improving business efficiency.</h2>
             <p>
               You do not need to know AI or software. You only need to know what is slow, confusing, or hard to control. We turn that into a clear solution.
             </p>
@@ -809,27 +845,27 @@
 
           <div class="cards">
             <article class="card featured">
-              <h3>AI helpers</h3>
+              <h3>AI solutions</h3>
               <p>
-                AI can answer questions, read documents, prepare reports, and help your team find information faster.
+                AI can answer questions, process documents, prepare reports, and find the information you need in seconds.
+              </p>
+            </article>
+            <article class="card">
+              <h3>Robots</h3>
+              <p>
+                We connect repetitive tasks and digital processes so they run automatically, without human involvement.
+              </p>
+            </article>
+            <article class="card">
+              <h3>Tech consulting</h3>
+              <p>
+                We help you choose the right digital strategy and build custom systems: dashboards, inventory, task, and reporting platforms.
               </p>
             </article>
             <article class="card">
               <h3>Automation</h3>
               <p>
-                We connect repeated tasks so they happen automatically. Your team spends less time clicking, copying, and checking.
-              </p>
-            </article>
-            <article class="card">
-              <h3>Business software</h3>
-              <p>
-                We build simple systems for your company: dashboards, orders, stock, staff work, tasks, reports, and more.
-              </p>
-            </article>
-            <article class="card">
-              <h3>Smart cameras</h3>
-              <p>
-                We add cameras and software when you need better control of stores, offices, warehouses, or construction sites.
+                We connect different software, smart cameras, and sensors into one system, giving you full control of your store, office, warehouse, or site.
               </p>
             </article>
           </div>
@@ -877,7 +913,7 @@
                 <div class="bar"><i style="width: 34%"></i></div>
               </div>
               <div class="bar-row">
-                <span><b>Business control</b><b>Higher</b></span>
+                <span><b>Business control</b><b>More</b></span>
                 <div class="bar purple"><i style="width: 86%"></i></div>
               </div>
               <div class="bar-row">
@@ -896,7 +932,7 @@
       <section id="industries">
         <div class="container">
           <div class="section-head center">
-            <h2>Useful for companies that have daily operations.</h2>
+            <h2>Useful for companies with complex daily operations.</h2>
             <p>
               If your business has people, tasks, customers, stock, sites, cameras, reports, or repeated work, we can help.
             </p>
@@ -904,7 +940,7 @@
 
           <div class="industries">
             <article class="industry">
-              <h3>Retail shops</h3>
+              <h3>Retail trade</h3>
               <ul>
                 <li>Control store work</li>
                 <li>Track stock and sales activity</li>
@@ -913,7 +949,7 @@
               </ul>
             </article>
             <article class="industry">
-              <h3>Construction companies</h3>
+              <h3>Construction sector</h3>
               <ul>
                 <li>Track site progress</li>
                 <li>Control tasks and workers</li>
@@ -922,12 +958,12 @@
               </ul>
             </article>
             <article class="industry">
-              <h3>Service businesses</h3>
+              <h3>Heavy industry</h3>
               <ul>
-                <li>Automate customer follow-up</li>
-                <li>Organize team tasks</li>
-                <li>Prepare reports faster</li>
-                <li>Connect tools your team already uses</li>
+                <li>Control the production process</li>
+                <li>Reduce downtime and mistakes</li>
+                <li>Get data from equipment and work zones</li>
+                <li>Improve safety and operational control</li>
               </ul>
             </article>
           </div>
@@ -953,8 +989,8 @@
               <p>We show a simple solution in clear words before anything is built.</p>
             </article>
             <article class="step">
-              <h3>We build</h3>
-              <p>We create the AI, automation, software, or camera setup your team needs.</p>
+              <h3>We integrate</h3>
+              <p>We integrate the AI, automation, software, or camera setup your team needs.</p>
             </article>
             <article class="step">
               <h3>We support</h3>
@@ -967,7 +1003,7 @@
       <section id="contact" class="cta">
         <div class="container cta-box">
           <div>
-            <h2>Tell us what is slowing your business down.</h2>
+            <h2>Tell us your business challenges.</h2>
             <p>
               We will help you find a simple technology solution that saves time, gives you control, and helps your team work better.
             </p>
