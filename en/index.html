@@ -17,12 +17,14 @@
         --purple: #7c3aed;
         --green: #16c34a;
         --black: #0f1115;
+        --deep: #151827;
         --graphite: #475467;
         --white: #ffffff;
         --light: #f5f7fa;
         --divider: #d9dee5;
         --muted: #98a2b3;
         --shadow: 0 22px 60px rgba(15, 17, 21, 0.1);
+        --glass: rgba(255, 255, 255, 0.12);
       }
 
       * {
@@ -96,6 +98,41 @@
         font-weight: 700;
       }
 
+      .nav-actions {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+      }
+
+      .language-switch {
+        display: inline-flex;
+        align-items: center;
+        gap: 3px;
+        padding: 4px;
+        border: 1px solid var(--divider);
+        border-radius: 999px;
+        background: rgba(245, 247, 250, 0.9);
+        color: var(--graphite);
+        font-size: 13px;
+        font-weight: 850;
+      }
+
+      .language-switch a,
+      .language-switch span {
+        min-width: 34px;
+        min-height: 30px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 999px;
+        padding: 0 10px;
+      }
+
+      .language-switch .active {
+        background: var(--black);
+        color: var(--white);
+      }
+
       .button {
         min-height: 46px;
         display: inline-flex;
@@ -113,18 +150,58 @@
       }
 
       .button.secondary {
-        background: var(--white);
-        color: var(--black);
-        border-color: var(--divider);
+        background: rgba(255, 255, 255, 0.12);
+        color: var(--white);
+        border-color: rgba(255, 255, 255, 0.26);
         box-shadow: none;
       }
 
       .hero {
+        position: relative;
+        isolation: isolate;
         min-height: calc(100vh - 76px);
         display: grid;
         align-items: center;
         padding: 72px 0 84px;
-        background: var(--light);
+        color: var(--white);
+        background:
+          radial-gradient(circle at 8% 18%, rgba(124, 58, 237, 0.62), transparent 28%),
+          radial-gradient(circle at 72% 18%, rgba(22, 195, 74, 0.42), transparent 24%),
+          radial-gradient(circle at 88% 82%, rgba(45, 212, 191, 0.28), transparent 28%),
+          linear-gradient(135deg, var(--black), var(--deep));
+        overflow: hidden;
+      }
+
+      .hero::before,
+      .hero::after {
+        content: "";
+        position: absolute;
+        z-index: -1;
+        pointer-events: none;
+      }
+
+      .hero::before {
+        inset: 0;
+        background:
+          linear-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
+        background-size: 72px 72px;
+        mask-image: radial-gradient(circle at 50% 40%, black, transparent 72%);
+      }
+
+      .hero::after {
+        width: 720px;
+        height: 720px;
+        right: -190px;
+        top: -170px;
+        border-radius: 50%;
+        background:
+          radial-gradient(circle at 35% 35%, rgba(255, 255, 255, 0.38), transparent 12%),
+          radial-gradient(circle at 48% 48%, rgba(22, 195, 74, 0.48), transparent 24%),
+          radial-gradient(circle at 62% 62%, rgba(124, 58, 237, 0.58), transparent 34%),
+          radial-gradient(circle at 50% 50%, rgba(45, 212, 191, 0.3), transparent 46%);
+        filter: blur(20px);
+        opacity: 0.82;
       }
 
       .hero-grid,
@@ -140,7 +217,12 @@
         align-items: center;
         gap: 8px;
         margin-bottom: 18px;
-        color: var(--purple);
+        padding: 8px 12px;
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.1);
+        color: rgba(255, 255, 255, 0.9);
+        backdrop-filter: blur(16px);
         font-size: 14px;
         font-weight: 850;
       }
@@ -171,7 +253,7 @@
       .hero-copy {
         max-width: 680px;
         margin-bottom: 30px;
-        color: var(--graphite);
+        color: rgba(255, 255, 255, 0.84);
         font-size: 20px;
       }
 
@@ -186,7 +268,7 @@
         display: flex;
         flex-wrap: wrap;
         gap: 16px;
-        color: var(--graphite);
+        color: rgba(255, 255, 255, 0.84);
         font-size: 15px;
         font-weight: 750;
       }
@@ -206,16 +288,17 @@
       }
 
       .work-card {
-        border: 1px solid var(--divider);
+        border: 1px solid rgba(255, 255, 255, 0.18);
         border-radius: 8px;
-        background: var(--white);
-        box-shadow: var(--shadow);
+        background: rgba(255, 255, 255, 0.1);
+        box-shadow: 0 28px 90px rgba(0, 0, 0, 0.26);
+        backdrop-filter: blur(24px);
         overflow: hidden;
       }
 
       .work-card-head {
         padding: 20px;
-        border-bottom: 1px solid var(--divider);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.16);
       }
 
       .work-card-head strong {
@@ -225,7 +308,7 @@
       }
 
       .work-card-head span {
-        color: var(--graphite);
+        color: rgba(255, 255, 255, 0.7);
       }
 
       .work-list {
@@ -240,8 +323,9 @@
         gap: 12px;
         align-items: center;
         padding: 14px;
-        border: 1px solid var(--divider);
+        border: 1px solid rgba(255, 255, 255, 0.16);
         border-radius: 8px;
+        background: rgba(255, 255, 255, 0.08);
       }
 
       .work-icon {
@@ -250,8 +334,8 @@
         display: grid;
         place-items: center;
         border-radius: 8px;
-        background: rgba(124, 58, 237, 0.1);
-        color: var(--purple);
+        background: rgba(124, 58, 237, 0.22);
+        color: #c4b5fd;
         font-weight: 900;
       }
 
@@ -261,7 +345,7 @@
       }
 
       .work-item span {
-        color: var(--graphite);
+        color: rgba(255, 255, 255, 0.68);
         font-size: 14px;
       }
 
@@ -278,12 +362,12 @@
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         gap: 1px;
-        background: var(--divider);
+        background: rgba(255, 255, 255, 0.16);
       }
 
       .metric {
         padding: 18px;
-        background: var(--white);
+        background: rgba(255, 255, 255, 0.08);
       }
 
       .metric strong {
@@ -293,7 +377,7 @@
       }
 
       .metric span {
-        color: var(--graphite);
+        color: rgba(255, 255, 255, 0.68);
         font-size: 13px;
         font-weight: 750;
       }
@@ -303,7 +387,10 @@
       }
 
       .band {
-        background: var(--light);
+        color: var(--white);
+        background:
+          radial-gradient(circle at 85% 18%, rgba(124, 58, 237, 0.26), transparent 32%),
+          linear-gradient(135deg, #10131c, #191d2c);
       }
 
       .section-head {
@@ -324,10 +411,41 @@
         letter-spacing: 0;
       }
 
+      html[lang="ka"] h1 {
+        max-width: 650px;
+        font-size: clamp(34px, 4vw, 52px);
+        line-height: 1.13;
+      }
+
+      html[lang="ka"] h2 {
+        font-size: clamp(28px, 3.2vw, 40px);
+        line-height: 1.14;
+      }
+
+      html[lang="ka"] .card h3,
+      html[lang="ka"] .industry h3,
+      html[lang="ka"] .step h3 {
+        font-size: 20px;
+        line-height: 1.25;
+      }
+
+      html[lang="ka"] .simple-panel h3 {
+        font-size: 22px;
+        line-height: 1.25;
+      }
+
       .section-head p,
       .wide-copy {
         color: var(--graphite);
         font-size: 19px;
+      }
+
+      .band .section-head p,
+      .band .wide-copy,
+      .band .benefit span,
+      .band .step p,
+      .band .bar-row span {
+        color: rgba(255, 255, 255, 0.72);
       }
 
       .cards {
@@ -341,7 +459,9 @@
         padding: 26px;
         border: 1px solid var(--divider);
         border-radius: 8px;
-        background: var(--white);
+        background: rgba(255, 255, 255, 0.82);
+        box-shadow: 0 18px 45px rgba(15, 17, 21, 0.06);
+        backdrop-filter: blur(18px);
       }
 
       .card.featured {
@@ -419,8 +539,17 @@
         padding: 28px;
         border: 1px solid var(--divider);
         border-radius: 8px;
-        background: var(--white);
+        background: rgba(255, 255, 255, 0.86);
         box-shadow: var(--shadow);
+        backdrop-filter: blur(20px);
+      }
+
+      .band .simple-panel,
+      .band .step {
+        border-color: rgba(255, 255, 255, 0.16);
+        background: rgba(255, 255, 255, 0.1);
+        box-shadow: 0 22px 70px rgba(0, 0, 0, 0.24);
+        backdrop-filter: blur(22px);
       }
 
       .simple-panel h3 {
@@ -449,7 +578,7 @@
       .bar {
         height: 12px;
         border-radius: 999px;
-        background: var(--light);
+        background: rgba(152, 162, 179, 0.22);
         overflow: hidden;
       }
 
@@ -538,7 +667,9 @@
 
       .cta {
         padding: 74px 0;
-        background: var(--black);
+        background:
+          radial-gradient(circle at 82% 22%, rgba(22, 195, 74, 0.18), transparent 28%),
+          linear-gradient(135deg, var(--black), #191d2c);
         color: var(--white);
       }
 
@@ -557,21 +688,22 @@
       }
 
       footer {
-        padding: 38px 0;
+        padding: 34px 0;
         border-top: 1px solid var(--divider);
       }
 
       .footer-grid {
         display: grid;
-        grid-template-columns: 1fr auto;
-        gap: 24px;
+        grid-template-columns: auto 1fr auto;
+        gap: 28px;
         align-items: center;
       }
 
       .footer-brand {
         display: flex;
         align-items: center;
-        gap: 12px;
+        gap: 18px;
+        min-width: 0;
       }
 
       .footer-brand img {
@@ -580,8 +712,15 @@
         object-fit: contain;
       }
 
+      .footer-brand-text {
+        display: grid;
+        gap: 4px;
+        min-width: 0;
+      }
+
       .footer-brand strong {
         display: block;
+        line-height: 1.1;
       }
 
       .footer-brand span,
@@ -592,9 +731,16 @@
       .footer-contact {
         display: flex;
         flex-wrap: wrap;
+        align-items: center;
         justify-content: flex-end;
         gap: 16px;
         font-weight: 750;
+      }
+
+      .footer-contact a {
+        display: inline-flex;
+        align-items: center;
+        min-height: 38px;
       }
 
       @media (max-width: 980px) {
@@ -633,8 +779,42 @@
           width: min(100% - 28px, 1120px);
         }
 
+        .nav-inner {
+          gap: 10px;
+        }
+
+        .nav-actions {
+          gap: 8px;
+        }
+
         .brand img {
-          width: 92px;
+          width: 88px;
+        }
+
+        .nav .button {
+          min-height: 40px;
+          padding: 0 12px;
+          font-size: 13px;
+        }
+
+        .footer-brand {
+          align-items: flex-start;
+        }
+
+        .footer-contact {
+          gap: 10px 14px;
+        }
+
+        .language-switch {
+          padding: 3px;
+          font-size: 12px;
+        }
+
+        .language-switch a,
+        .language-switch span {
+          min-width: 30px;
+          min-height: 28px;
+          padding: 0 8px;
         }
 
         section,
@@ -688,9 +868,14 @@
           <a href="#benefits">Benefits</a>
           <a href="#industries">Industries</a>
           <a href="#contact">Contact</a>
-          <a href="../">ქართული</a>
         </nav>
-        <a class="button" href="mailto:info@pulsartech.ge">Talk to us</a>
+        <div class="nav-actions">
+          <div class="language-switch" aria-label="Choose language">
+            <a href="../">KA</a>
+            <span class="active">EN</span>
+          </div>
+          <a class="button" href="mailto:info@pulsartech.ge">Talk to us</a>
+        </div>
       </div>
     </header>
 
@@ -991,7 +1176,7 @@
       <div class="container footer-grid">
         <div class="footer-brand">
           <img src="../pulsar-logo-cropped.png" alt="Pulsar logo">
-          <div>
+          <div class="footer-brand-text">
             <strong>LLC Pulsar</strong>
             <span>AI, automation, and business software</span>
           </div>
@@ -999,7 +1184,10 @@
         <div class="footer-contact">
           <a href="tel:+995599992030">+995 599992030</a>
           <a href="mailto:info@pulsartech.ge">info@pulsartech.ge</a>
-          <a href="../">ქართული</a>
+          <div class="language-switch" aria-label="Choose language">
+            <a href="../">KA</a>
+            <span class="active">EN</span>
+          </div>
         </div>
       </div>
     </footer>
