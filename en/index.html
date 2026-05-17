@@ -348,6 +348,10 @@
           linear-gradient(135deg, #10131c, #191d2c);
       }
 
+      #benefits {
+        margin-bottom: -1px;
+      }
+
       .section-head {
         max-width: 760px;
         margin-bottom: 38px;
@@ -550,20 +554,71 @@
         background: var(--purple);
       }
 
+      .industry-section {
+        position: relative;
+        isolation: isolate;
+        overflow: hidden;
+        color: var(--white);
+        background:
+          linear-gradient(180deg, #191d2c 0%, rgba(25, 29, 44, 0) 16%),
+          radial-gradient(circle at 12% 42%, rgba(124, 58, 237, 0.34), transparent 28%),
+          radial-gradient(circle at 86% 34%, rgba(22, 195, 74, 0.28), transparent 28%),
+          radial-gradient(circle at 54% 94%, rgba(45, 212, 191, 0.18), transparent 32%),
+          linear-gradient(135deg, #0b0d13, #111827 58%, #0f1115);
+      }
+
+      .industry-section::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        background:
+          linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+        background-size: 78px 78px;
+        mask-image: linear-gradient(180deg, transparent 0, black 18%, black 80%, transparent 100%);
+      }
+
+      .industry-section .section-head p {
+        color: rgba(255, 255, 255, 0.72);
+      }
+
       .industries {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        gap: 1px;
-        overflow: hidden;
-        border: 1px solid var(--divider);
-        border-radius: 8px;
-        background: var(--divider);
+        gap: 38px;
       }
 
       .industry {
-        min-height: 300px;
-        padding: 30px;
-        background: var(--white);
+        display: grid;
+        gap: 24px;
+        align-content: start;
+      }
+
+      .industry-visual {
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+        height: 430px;
+      }
+
+      .industry-visual img {
+        width: 100%;
+        max-width: 360px;
+        height: 100%;
+        object-fit: contain;
+        object-position: bottom center;
+      }
+
+      .industry-body {
+        width: min(100%, 360px);
+        margin: 0 auto;
+        padding: 0;
+      }
+
+      .industry h3 {
+        color: var(--white);
+        text-align: center;
       }
 
       .industry ul {
@@ -572,7 +627,7 @@
         margin: 22px 0 0;
         padding: 0;
         list-style: none;
-        color: var(--graphite);
+        color: rgba(255, 255, 255, 0.72);
       }
 
       .industry li {
@@ -721,6 +776,15 @@
           grid-template-columns: 1fr;
         }
 
+        .industry {
+          grid-template-columns: minmax(220px, 38%) 1fr;
+          align-items: center;
+        }
+
+        .industry-visual {
+          height: 360px;
+        }
+
         .simple-panel {
           max-width: 560px;
         }
@@ -809,6 +873,15 @@
         .cards,
         .steps {
           grid-template-columns: 1fr;
+        }
+
+        .industry {
+          grid-template-columns: 1fr;
+          gap: 20px;
+        }
+
+        .industry-visual {
+          height: 390px;
         }
 
         .card-image {
@@ -975,7 +1048,7 @@
         </div>
       </section>
 
-      <section id="industries">
+      <section id="industries" class="industry-section">
         <div class="container">
           <div class="section-head center">
             <h2>Useful for companies with complex daily operations.</h2>
@@ -986,37 +1059,52 @@
 
           <div class="industries">
             <article class="industry">
-              <h3>Retail trade</h3>
-              <ul>
-                <li>Control store work</li>
-                <li>Track stock and sales activity</li>
-                <li>Reduce repeated manual reports</li>
-                <li>Use cameras for better visibility</li>
-              </ul>
+              <div class="industry-visual">
+                <img src="../retail-sector.png" alt="Retail trade visual">
+              </div>
+              <div class="industry-body">
+                <h3>Retail trade</h3>
+                <ul>
+                  <li>Control store work</li>
+                  <li>Track stock and sales activity</li>
+                  <li>Reduce repeated manual reports</li>
+                  <li>Use cameras for better visibility</li>
+                </ul>
+              </div>
             </article>
             <article class="industry">
-              <h3>Construction sector</h3>
-              <ul>
-                <li>Track site progress</li>
-                <li>Control tasks and workers</li>
-                <li>Get clear updates from projects</li>
-                <li>Use cameras to check key areas</li>
-              </ul>
+              <div class="industry-visual">
+                <img src="../construction-sector.png" alt="Construction sector visual">
+              </div>
+              <div class="industry-body">
+                <h3>Construction sector</h3>
+                <ul>
+                  <li>Track site progress</li>
+                  <li>Control tasks and workers</li>
+                  <li>Get clear updates from projects</li>
+                  <li>Use cameras to check key areas</li>
+                </ul>
+              </div>
             </article>
             <article class="industry">
-              <h3>Heavy industry</h3>
-              <ul>
-                <li>Control the production process</li>
-                <li>Reduce downtime and mistakes</li>
-                <li>Get data from equipment and work zones</li>
-                <li>Improve safety and operational control</li>
-              </ul>
+              <div class="industry-visual">
+                <img src="../heavy.png" alt="Heavy industry visual">
+              </div>
+              <div class="industry-body">
+                <h3>Heavy industry</h3>
+                <ul>
+                  <li>Control the production process</li>
+                  <li>Reduce downtime and mistakes</li>
+                  <li>Get data from equipment and work zones</li>
+                  <li>Improve safety and operational control</li>
+                </ul>
+              </div>
             </article>
           </div>
         </div>
       </section>
 
-      <section class="band">
+      <section>
         <div class="container">
           <div class="section-head">
             <h2>How we work with you.</h2>
