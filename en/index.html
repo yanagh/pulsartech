@@ -700,21 +700,21 @@
       }
 
       footer {
-        padding: 34px 0;
+        padding: 44px 0 28px;
         border-top: 1px solid var(--divider);
+        background: var(--white);
       }
 
       .footer-grid {
         display: grid;
-        grid-template-columns: auto 1fr auto;
-        gap: 28px;
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 32px;
         align-items: center;
       }
 
       .footer-brand {
         display: flex;
         align-items: center;
-        gap: 18px;
         min-width: 0;
       }
 
@@ -724,18 +724,6 @@
         object-fit: contain;
       }
 
-      .footer-brand-text {
-        display: grid;
-        gap: 4px;
-        min-width: 0;
-      }
-
-      .footer-brand strong {
-        display: block;
-        line-height: 1.1;
-      }
-
-      .footer-brand span,
       .footer-contact {
         color: var(--graphite);
       }
@@ -745,14 +733,35 @@
         flex-wrap: wrap;
         align-items: center;
         justify-content: flex-end;
-        gap: 16px;
+        gap: 10px;
         font-weight: 750;
       }
 
       .footer-contact a {
         display: inline-flex;
         align-items: center;
-        min-height: 38px;
+        justify-content: center;
+        min-height: 42px;
+        padding: 0 14px;
+        border: 1px solid var(--divider);
+        border-radius: 999px;
+        background: var(--light);
+        color: var(--black);
+        font-weight: 850;
+        white-space: nowrap;
+      }
+
+      .footer-bottom {
+        grid-column: 1 / -1;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+        margin-top: 28px;
+        padding-top: 20px;
+        border-top: 1px solid var(--divider);
+        color: var(--muted);
+        font-size: 14px;
       }
 
       @media (max-width: 980px) {
@@ -802,6 +811,12 @@
         .footer-contact {
           justify-content: flex-start;
         }
+
+        .footer-bottom {
+          align-items: flex-start;
+          flex-direction: column;
+          gap: 8px;
+        }
       }
 
       @media (max-width: 640px) {
@@ -832,7 +847,14 @@
         }
 
         .footer-contact {
-          gap: 10px 14px;
+          display: grid;
+          width: 100%;
+          gap: 10px;
+          justify-items: start;
+        }
+
+        .footer-contact a {
+          width: 100%;
         }
 
         .language-switch {
@@ -1151,18 +1173,14 @@
       <div class="container footer-grid">
         <div class="footer-brand">
           <img src="../pulsar-logo-cropped.png" alt="Pulsar logo">
-          <div class="footer-brand-text">
-            <strong>LLC Pulsar</strong>
-            <span>AI, automation, and business software</span>
-          </div>
         </div>
         <div class="footer-contact">
-          <a href="tel:+995599992030">+995 599992030</a>
+          <a href="https://wa.me/995599992030" target="_blank" rel="noopener">+995 599 99 20 30</a>
           <a href="mailto:info@pulsartech.ge">info@pulsartech.ge</a>
-          <div class="language-switch" aria-label="Choose language">
-            <a href="../">KA</a>
-            <span class="active">EN</span>
-          </div>
+        </div>
+        <div class="footer-bottom">
+          <span>© 2026 LLC Pulsar</span>
+          <span>AI, automation, software, and smart cameras</span>
         </div>
       </div>
     </footer>
