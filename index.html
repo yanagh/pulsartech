@@ -15,11 +15,15 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="საუკეთესო AI გადაწყვეტები თქვენი ბიზნესისთვის">
     <meta name="twitter:description" content="ვეხმარებით ბიზნესებს ოპტიმიზაციაში, ეფექტურობის გაზრდაში, შეცდომების შემცირებაში და ყოველდღიური ბიზნეს პროცესების გაუმჯობესებაში">
+    <meta name="theme-color" content="#ffffff">
     <link rel="icon" type="image/png" href="favicon.png">
     <link rel="canonical" href="/">
     <link rel="alternate" hreflang="ka" href="/">
     <link rel="alternate" hreflang="en" href="/en/">
     <link rel="alternate" hreflang="x-default" href="/">
+    <link rel="preload" href="fonts/firago-regular.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="fonts/firago-semibold.woff2" as="font" type="font/woff2" crossorigin>
+    <script>document.documentElement.classList.add("js")</script>
     <style>
       @font-face {
         font-family: "FiraGO";
@@ -28,7 +32,20 @@
         font-style: normal;
         font-display: swap;
       }
-
+      @font-face {
+        font-family: "FiraGO";
+        src: url("fonts/firago-semibold.woff2") format("woff2");
+        font-weight: 600;
+        font-style: normal;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: "FiraGO";
+        src: url("fonts/firago-bold.woff2") format("woff2");
+        font-weight: 700;
+        font-style: normal;
+        font-display: swap;
+      }
       @font-face {
         font-family: "FiraGO";
         src: url("fonts/firago-heavy.woff2") format("woff2");
@@ -39,1052 +56,785 @@
 
       :root {
         --purple: #7c3aed;
+        --purple-soft: #f3edff;
         --green: #16c34a;
+        --green-soft: #e8f9ee;
+        --teal: #2dd4bf;
         --black: #0f1115;
-        --deep: #151827;
+        --ink: #12141c;
         --graphite: #475467;
-        --white: #ffffff;
-        --light: #f5f7fa;
-        --divider: #d9dee5;
         --muted: #98a2b3;
-        --shadow: 0 22px 60px rgba(15, 17, 21, 0.1);
-        --glass: rgba(255, 255, 255, 0.12);
+        --divider: #e6e9ef;
+        --light: #f5f7fa;
+        --white: #ffffff;
+        --radius: 14px;
+        --radius-lg: 28px;
+        --ease: cubic-bezier(.2, .7, .2, 1);
+        --font: "FiraGO", Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       }
 
-      * {
-        box-sizing: border-box;
-      }
-
-      html {
-        scroll-behavior: smooth;
-      }
-
+      *, *::before, *::after { box-sizing: border-box; }
+      html { scroll-behavior: smooth; scroll-padding-top: 96px; }
       body {
         margin: 0;
+        font-family: var(--font);
+        font-weight: 400;
         color: var(--black);
         background: var(--white);
-        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-        line-height: 1.5;
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+        text-rendering: optimizeLegibility;
       }
+      img { display: block; max-width: 100%; }
+      a { color: inherit; text-decoration: none; }
+      h1, h2, h3, p { margin: 0; }
+      h1, h2, h3 { font-weight: 600; letter-spacing: -0.005em; text-wrap: balance; }
+      p { text-wrap: pretty; }
 
-      img {
-        display: block;
-        max-width: 100%;
+      .container { width: min(1200px, calc(100% - 48px)); margin: 0 auto; }
+
+      /* ---------- Buttons ---------- */
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        min-height: 50px;
+        padding: 0 22px;
+        border-radius: 999px;
+        border: 1px solid transparent;
+        font-size: 15px;
+        white-space: nowrap;
+        transition: transform .25s var(--ease), background .25s var(--ease), box-shadow .25s var(--ease), border-color .25s var(--ease);
       }
-
-      a {
-        color: inherit;
-        text-decoration: none;
+      .btn svg { width: 18px; height: 18px; transition: transform .25s var(--ease); }
+      .btn:hover svg { transform: translateX(3px); }
+      .btn-primary {
+        background: var(--purple);
+        color: var(--white);
+        box-shadow: 0 10px 30px -10px rgba(124, 58, 237, .7), inset 0 1px 0 rgba(255,255,255,.18);
       }
-
-      .container {
-        width: min(1120px, calc(100% - 40px));
-        margin: 0 auto;
+      .btn-primary:hover { transform: translateY(-1px); background: #6d28d9; }
+      .btn-ghost {
+        color: var(--white);
+        background: rgba(255,255,255,.06);
+        border-color: rgba(255,255,255,.18);
       }
+      .btn-ghost:hover { background: rgba(255,255,255,.12); border-color: rgba(255,255,255,.3); }
+      .btn-white { background: var(--white); color: var(--black); }
+      .btn-white:hover { transform: translateY(-1px); }
+      .btn:focus-visible, a:focus-visible { outline: 2px solid var(--purple); outline-offset: 3px; }
 
-      .nav {
+      /* ---------- Nav ---------- */
+      .nav-wrap {
         position: sticky;
         top: 0;
-        z-index: 20;
-        background: rgba(255, 255, 255, 0.94);
-        border-bottom: 1px solid var(--divider);
-        backdrop-filter: blur(14px);
+        z-index: 50;
+        padding: 14px 0;
+        transition: padding .3s var(--ease);
       }
-
-      .nav-inner {
-        min-height: 76px;
+      .nav {
         display: flex;
         align-items: center;
         justify-content: space-between;
         gap: 24px;
-      }
-
-      .brand {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        font-size: 22px;
-        font-weight: 850;
-      }
-
-      .brand img {
-        width: 190px;
-        height: 77px;
-        object-fit: contain;
-      }
-
-      .nav-links {
-        display: flex;
-        align-items: center;
-        gap: 24px;
-        color: var(--graphite);
-        font-size: 15px;
-        font-weight: 900;
-      }
-
-      .nav-links a {
-        font-weight: 900;
-      }
-
-      .nav-actions {
-        display: flex;
-        align-items: center;
-        gap: 14px;
-      }
-
-      .language-switch {
-        display: inline-flex;
-        align-items: center;
-        gap: 3px;
-        padding: 4px;
-        border: 1px solid var(--divider);
-        border-radius: 999px;
-        background: rgba(245, 247, 250, 0.9);
-        color: var(--graphite);
-        font-size: 13px;
-        font-weight: 850;
-      }
-
-      .language-switch a,
-      .language-switch span {
-        min-width: 34px;
-        min-height: 30px;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 999px;
-        padding: 0 10px;
-      }
-
-      .language-switch .active {
-        background: var(--black);
-        color: var(--white);
-      }
-
-      .button {
-        min-height: 46px;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        padding: 0 20px;
-        border-radius: 8px;
+        height: 64px;
+        padding: 0 10px 0 22px;
         border: 1px solid transparent;
-        background: var(--purple);
-        color: var(--white);
-        font-size: 15px;
-        font-weight: 850;
-        box-shadow: 0 14px 30px rgba(124, 58, 237, 0.22);
-        white-space: nowrap;
+        border-radius: 999px;
+        transition: background .3s var(--ease), border-color .3s var(--ease), box-shadow .3s var(--ease);
       }
-
-      .button.secondary {
-        background: rgba(255, 255, 255, 0.12);
-        color: var(--white);
-        border-color: rgba(255, 255, 255, 0.26);
-        box-shadow: none;
+      .nav-wrap.scrolled .nav {
+        background: rgba(255,255,255,.78);
+        border-color: rgba(15,17,21,.06);
+        box-shadow: 0 8px 30px -12px rgba(15,17,21,.15);
+        backdrop-filter: saturate(180%) blur(16px);
+        -webkit-backdrop-filter: saturate(180%) blur(16px);
       }
+      .brand img { width: 138px; height: auto; }
+      .nav-links { display: flex; gap: 4px; font-size: 15px; color: var(--graphite); }
+      .nav-links a {
+        padding: 8px 14px;
+        border-radius: 999px;
+        transition: color .2s, background .2s;
+      }
+      .nav-links a:hover { color: var(--black); background: var(--light); }
+      .nav-actions { display: flex; align-items: center; gap: 10px; }
+      .nav .btn { min-height: 44px; padding: 0 18px; font-size: 14px; }
+      .lang {
+        display: inline-flex;
+        padding: 3px;
+        border-radius: 999px;
+        background: var(--light);
+        font-size: 12px;
+        letter-spacing: .04em;
+        color: var(--graphite);
+      }
+      .lang > * {
+        min-width: 36px;
+        height: 30px;
+        display: inline-grid;
+        place-items: center;
+        border-radius: 999px;
+      }
+      .lang .active { background: var(--white); color: var(--black); box-shadow: 0 1px 3px rgba(15,17,21,.12); }
+      .lang a:hover { color: var(--black); }
 
+      /* ---------- Hero ---------- */
+      .hero-shell { padding: 0 12px; }
       .hero {
         position: relative;
         isolation: isolate;
-        min-height: calc(100vh - 76px);
+        overflow: hidden;
+        max-width: 1440px;
+        margin: 0 auto;
+        border-radius: var(--radius-lg);
+        color: var(--white);
+        background: var(--ink);
+        min-height: min(700px, calc(100svh - 104px));
         display: grid;
         align-items: center;
-        padding: 72px 0 84px;
-        color: var(--white);
-        background:
-          radial-gradient(circle at 8% 18%, rgba(124, 58, 237, 0.62), transparent 28%),
-          radial-gradient(circle at 72% 18%, rgba(22, 195, 74, 0.42), transparent 24%),
-          radial-gradient(circle at 88% 82%, rgba(45, 212, 191, 0.28), transparent 28%),
-          linear-gradient(135deg, var(--black), var(--deep));
-        overflow: hidden;
       }
-
-      .hero::before,
+      .hero::before {
+        content: "";
+        position: absolute;
+        inset: -20%;
+        z-index: -2;
+        background:
+          radial-gradient(40% 50% at 15% 25%, rgba(124,58,237,.55), transparent 70%),
+          radial-gradient(35% 45% at 85% 20%, rgba(22,195,74,.28), transparent 70%),
+          radial-gradient(40% 50% at 80% 95%, rgba(45,212,191,.22), transparent 70%);
+        filter: blur(10px);
+        animation: drift 18s ease-in-out infinite alternate;
+      }
       .hero::after {
         content: "";
         position: absolute;
-        z-index: -1;
-        pointer-events: none;
-      }
-
-      .hero::before {
         inset: 0;
-        background:
-          linear-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px),
-          linear-gradient(90deg, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
-        background-size: 72px 72px;
-        mask-image: radial-gradient(circle at 50% 40%, black, transparent 72%);
+        z-index: -1;
+        background-image: radial-gradient(rgba(255,255,255,.14) 1px, transparent 1px);
+        background-size: 26px 26px;
+        mask-image: radial-gradient(70% 70% at 40% 40%, #000 20%, transparent 80%);
+        -webkit-mask-image: radial-gradient(70% 70% at 40% 40%, #000 20%, transparent 80%);
       }
-
-      .hero::after {
-        width: 720px;
-        height: 720px;
-        right: -190px;
-        top: -170px;
-        border-radius: 50%;
-        background:
-          radial-gradient(circle at 35% 35%, rgba(255, 255, 255, 0.38), transparent 12%),
-          radial-gradient(circle at 48% 48%, rgba(22, 195, 74, 0.48), transparent 24%),
-          radial-gradient(circle at 62% 62%, rgba(124, 58, 237, 0.58), transparent 34%),
-          radial-gradient(circle at 50% 50%, rgba(45, 212, 191, 0.3), transparent 46%);
-        filter: blur(20px);
-        opacity: 0.82;
+      @keyframes drift {
+        from { transform: translate3d(0,0,0) scale(1); }
+        to { transform: translate3d(-3%, 2%, 0) scale(1.06); }
       }
-
-      .hero-grid {
-        position: relative;
+      .hero-inner {
         display: grid;
-        grid-template-columns: minmax(0, 860px);
-        gap: 28px;
+        grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr);
+        gap: 40px;
         align-items: center;
+        padding: 72px 0;
       }
-
-      .hero-visual {
+      .pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 7px 14px 7px 8px;
+        border-radius: 999px;
+        border: 1px solid rgba(255,255,255,.14);
+        background: rgba(255,255,255,.06);
+        backdrop-filter: blur(12px);
+        font-size: 13px;
+        color: rgba(255,255,255,.88);
+      }
+      .pill .dot {
+        position: relative;
+        width: 20px; height: 20px;
+        display: grid; place-items: center;
+        border-radius: 50%;
+        background: rgba(22,195,74,.18);
+      }
+      .pill .dot::after {
+        content: "";
+        width: 7px; height: 7px;
+        border-radius: 50%;
+        background: var(--green);
+        box-shadow: 0 0 0 0 rgba(22,195,74,.6);
+        animation: ping 2.4s var(--ease) infinite;
+      }
+      @keyframes ping {
+        0% { box-shadow: 0 0 0 0 rgba(22,195,74,.55); }
+        70%, 100% { box-shadow: 0 0 0 8px rgba(22,195,74,0); }
+      }
+      .hero h1 {
+        font-weight: 700;
+        margin: 26px 0 22px;
+        font-size: clamp(32px, 4.1vw, 54px);
+        line-height: 1.14;
+      }
+      .hero h1 .grad {
+        background: linear-gradient(90deg, #c4b5fd, #86efac);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+      .hero-copy {
+        max-width: 560px;
+        font-size: 18px;
+        color: rgba(255,255,255,.72);
+      }
+      .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin: 36px 0 40px; }
+      .proof {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px 28px;
+        padding-top: 28px;
+        border-top: 1px solid rgba(255,255,255,.1);
+        font-size: 14px;
+        color: rgba(255,255,255,.78);
+      }
+      .proof span { display: inline-flex; align-items: center; gap: 9px; }
+      .proof svg { width: 18px; height: 18px; color: var(--green); flex: none; }
+      .hero-visual { position: relative; display: grid; place-items: center; }
+      .hero-visual::before {
+        content: "";
         position: absolute;
-        right: -130px;
-        top: 50%;
-        width: min(42vw, 610px);
-        transform: translateY(-50%);
-        justify-self: auto;
-        pointer-events: none;
+        width: 78%;
+        aspect-ratio: 1;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(124,58,237,.35), transparent 65%);
+        filter: blur(20px);
       }
-
       .hero-visual img {
         position: relative;
         width: 100%;
-        max-height: min(760px, calc(100vh - 120px));
+        max-width: 420px;
         height: auto;
+        max-height: 560px;
         object-fit: contain;
-        opacity: 1;
-        border: 0;
-        border-radius: 0;
-        box-shadow: none;
+        animation: float 7s ease-in-out infinite;
+      }
+      @keyframes float {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-12px); }
       }
 
-      .split {
-        display: grid;
-        grid-template-columns: minmax(0, 1fr) minmax(340px, 470px);
-        gap: 56px;
-        align-items: center;
-      }
-
-      .eyebrow {
+      /* ---------- Sections ---------- */
+      section { padding: 120px 0; }
+      .kicker {
         display: inline-flex;
         align-items: center;
         gap: 8px;
         margin-bottom: 18px;
-        padding: 8px 12px;
-        border: 1px solid rgba(255, 255, 255, 0.18);
-        border-radius: 999px;
-        background: rgba(255, 255, 255, 0.1);
-        color: rgba(255, 255, 255, 0.9);
-        backdrop-filter: blur(16px);
-        font-size: 14px;
-        font-weight: 850;
-      }
-
-      .eyebrow::before {
-        content: "";
-        width: 9px;
-        height: 9px;
-        border-radius: 50%;
-        background: var(--green);
-      }
-
-      h1,
-      h2,
-      h3,
-      p {
-        margin-top: 0;
-      }
-
-      h1 {
-        max-width: 700px;
-        margin-bottom: 20px;
-        font-size: clamp(38px, 4.7vw, 60px);
-        line-height: 1.08;
-        letter-spacing: 0;
-      }
-
-      .hero-copy {
-        max-width: 680px;
-        margin-bottom: 30px;
-        color: rgba(255, 255, 255, 0.84);
-        font-size: 20px;
-      }
-
-      .hero-actions {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 14px;
-        margin-bottom: 32px;
-      }
-
-      .proof-row {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 16px;
-        color: rgba(255, 255, 255, 0.84);
-        font-size: 15px;
-        font-weight: 750;
-      }
-
-      .proof-row span {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-      }
-
-      .proof-row span::before {
-        content: "";
-        width: 8px;
-        height: 8px;
-        border-radius: 50%;
-        background: var(--green);
-      }
-
-      .tag {
-        padding: 6px 10px;
-        border-radius: 999px;
-        background: rgba(22, 195, 74, 0.12);
-        color: var(--green);
         font-size: 13px;
-        font-weight: 850;
+        letter-spacing: .06em;
+        color: var(--purple);
       }
-
-      section {
-        padding: 88px 0;
-      }
-
-      .band {
-        color: var(--white);
-        background:
-          radial-gradient(circle at 85% 18%, rgba(124, 58, 237, 0.26), transparent 32%),
-          linear-gradient(135deg, #10131c, #191d2c);
-      }
-
-      #benefits {
-        margin-bottom: -1px;
-      }
-
-      .section-head {
-        max-width: 760px;
-        margin-bottom: 38px;
-      }
-
-      .section-head.center {
-        margin-left: auto;
-        margin-right: auto;
-        text-align: center;
-      }
-
-      h2 {
-        margin-bottom: 14px;
-        font-size: clamp(32px, 4vw, 48px);
-        line-height: 1.05;
-        letter-spacing: 0;
-      }
-
-      html[lang="ka"] h1 {
-        max-width: 820px;
-        font-size: clamp(34px, 4vw, 52px);
-        line-height: 1.13;
-      }
-
-      html[lang="ka"] body {
-        font-family: "FiraGO", Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-        font-weight: 400;
-      }
-
-      html[lang="ka"] h1,
-      html[lang="ka"] h2,
-      html[lang="ka"] h3 {
-        font-family: "FiraGO", Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-        font-weight: 900;
-        text-transform: uppercase;
-      }
-
-      html[lang="ka"] p,
-      html[lang="ka"] li,
-      html[lang="ka"] a,
-      html[lang="ka"] span,
-      html[lang="ka"] .button,
-      html[lang="ka"] .eyebrow,
-      html[lang="ka"] .nav-links,
-      html[lang="ka"] .proof-row,
-      html[lang="ka"] .footer-contact,
-      html[lang="ka"] .language-switch {
-        font-weight: 400;
-      }
-
-      html[lang="ka"] .nav-links,
-      html[lang="ka"] .nav-links a {
-        font-weight: 900;
-      }
-
-      html[lang="ka"] h2 {
-        font-size: clamp(28px, 3.2vw, 40px);
-        line-height: 1.14;
-      }
-
-      html[lang="ka"] .card h3,
-      html[lang="ka"] .industry h3,
-      html[lang="ka"] .step h3 {
-        font-size: 20px;
-        line-height: 1.25;
-      }
-
-      html[lang="ka"] .simple-panel h3 {
-        font-size: 22px;
-        line-height: 1.25;
-      }
-
-      .section-head p,
-      .wide-copy {
-        color: var(--graphite);
-        font-size: 19px;
-      }
-
-      .band .section-head p,
-      .band .wide-copy,
-      .band .benefit span,
-      .band .step p,
-      .band .bar-row span {
-        color: rgba(255, 255, 255, 0.72);
-      }
-
-      .cards {
+      .kicker::before { content: ""; width: 18px; height: 2px; border-radius: 2px; background: currentColor; }
+      .on-dark .kicker { color: #c4b5fd; }
+      .head {
         display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 18px;
+        grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr);
+        gap: 48px;
+        align-items: end;
+        margin-bottom: 56px;
       }
+      .head.center { grid-template-columns: 1fr; max-width: 820px; margin-inline: auto; text-align: center; }
+      .head.center .kicker { justify-content: center; }
+      h2 { font-size: clamp(28px, 3vw, 40px); line-height: 1.2; }
+      .lead { font-size: 18px; color: var(--graphite); }
+      .on-dark .lead { color: rgba(255,255,255,.66); }
 
-      .card {
-        min-height: 250px;
-        padding: 18px 18px 24px;
+      /* ---------- Services (bento) ---------- */
+      #services { padding: 88px 0; }
+      #services .head { margin-bottom: 40px; }
+      .bento { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+      .svc {
+        position: relative;
+        display: grid;
+        grid-template-rows: auto 1fr;
         border: 1px solid var(--divider);
-        border-radius: 8px;
+        border-radius: 22px;
         background: var(--white);
-        box-shadow: 0 18px 45px rgba(15, 17, 21, 0.06);
-        backdrop-filter: blur(18px);
         overflow: hidden;
+        transition: transform .4s var(--ease), box-shadow .4s var(--ease), border-color .4s var(--ease);
       }
-
-      .card.featured {
-        background: var(--white);
-        color: var(--black);
-        border-color: var(--divider);
+      .svc:hover {
+        transform: translateY(-4px);
+        border-color: #d8ccfb;
+        box-shadow: 0 30px 60px -30px rgba(124,58,237,.35);
       }
-
-      .card-image {
+      .svc-media {
+        height: 170px;
         display: flex;
         align-items: center;
         justify-content: center;
-        height: 150px;
-        margin: -6px -6px 20px;
-        border-radius: 8px;
+        padding: 16px;
         background: var(--white);
-        overflow: hidden;
+        border-bottom: 1px solid var(--divider);
       }
-
-      .card-image img {
-        width: calc(100% - 18px);
-        height: calc(100% - 18px);
+      .svc-media img {
+        max-width: 100%;
+        max-height: 100%;
+        width: auto;
+        height: auto;
         object-fit: contain;
+        transition: transform .6s var(--ease);
       }
-
-      .card h3 {
-        margin-bottom: 10px;
-        font-size: 22px;
-        line-height: 1.18;
-      }
-
-      .card p {
-        color: var(--graphite);
-        font-size: 16px;
-      }
-
-      .card.featured p {
-        color: var(--graphite);
-      }
-
-      .benefit-list {
-        display: grid;
-        gap: 16px;
-        margin-top: 28px;
-      }
-
-      .benefit {
-        display: grid;
-        grid-template-columns: 34px 1fr;
-        gap: 14px;
-        align-items: start;
-      }
-
-      .check {
-        width: 34px;
-        height: 34px;
-        display: grid;
-        place-items: center;
-        border-radius: 50%;
-        background: rgba(22, 195, 74, 0.12);
-        color: var(--green);
-        font-weight: 900;
-      }
-
-      .benefit strong {
-        display: block;
-        margin-bottom: 3px;
-        font-size: 18px;
-      }
-
-      .benefit span {
-        color: var(--graphite);
-      }
-
-      .simple-panel {
-        padding: 28px;
-        border: 1px solid var(--divider);
-        border-radius: 8px;
-        background: rgba(255, 255, 255, 0.86);
-        box-shadow: var(--shadow);
-        backdrop-filter: blur(20px);
-      }
-
-      .band .simple-panel,
-      .band .step {
-        border-color: rgba(255, 255, 255, 0.16);
-        background: rgba(255, 255, 255, 0.1);
-        box-shadow: 0 22px 70px rgba(0, 0, 0, 0.24);
-        backdrop-filter: blur(22px);
-      }
-
-      .simple-panel h3 {
-        margin-bottom: 18px;
-        font-size: 24px;
-      }
-
-      .bar-list {
-        display: grid;
-        gap: 16px;
-      }
-
-      .bar-row {
-        display: grid;
-        gap: 8px;
-      }
-
-      .bar-row span {
-        display: flex;
-        justify-content: space-between;
-        color: var(--graphite);
-        font-size: 14px;
-        font-weight: 750;
-      }
-
-      .bar {
-        height: 12px;
+      .svc:hover .svc-media img { transform: scale(1.04); }
+      .svc-body { padding: 22px 22px 26px; background: linear-gradient(180deg, var(--white), #fbfbfd); }
+      .svc-tag {
+        display: inline-block;
+        margin-bottom: 12px;
+        padding: 4px 10px;
         border-radius: 999px;
-        background: rgba(152, 162, 179, 0.22);
-        overflow: hidden;
+        background: var(--purple-soft);
+        color: var(--purple);
+        font-size: 12px;
+        letter-spacing: .04em;
       }
+      .svc h3 { margin-bottom: 8px; font-size: 19px; line-height: 1.3; }
+      .svc p { color: var(--graphite); font-size: 14.5px; line-height: 1.6; }
 
-      .bar i {
+      /* ---------- Benefits ---------- */
+      .benefits { background: var(--light); }
+      .benefits-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        gap: 72px;
+        align-items: center;
+      }
+      .benefits h2 { margin-bottom: 20px; }
+      .ben-list { display: grid; gap: 14px; margin-top: 40px; }
+      .ben {
+        display: grid;
+        grid-template-columns: 44px 1fr;
+        gap: 16px;
+        padding: 20px;
+        border-radius: var(--radius);
+        background: var(--white);
+        border: 1px solid var(--divider);
+      }
+      .ben-icon {
+        width: 44px; height: 44px;
+        display: grid; place-items: center;
+        border-radius: 12px;
+        background: var(--green-soft);
+        color: var(--green);
+      }
+      .ben-icon svg { width: 22px; height: 22px; }
+      .ben strong { display: block; margin-bottom: 4px; font-weight: 600; font-size: 17px; }
+      .ben span { color: var(--graphite); font-size: 15px; }
+
+      .compare {
+        position: relative;
+        padding: 36px;
+        border-radius: var(--radius-lg);
+        background: var(--ink);
+        color: var(--white);
+        overflow: hidden;
+        isolation: isolate;
+      }
+      .compare::before {
+        content: "";
+        position: absolute;
+        inset: auto -30% -50% auto;
+        width: 80%; aspect-ratio: 1;
+        z-index: -1;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(124,58,237,.45), transparent 65%);
+      }
+      .compare-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; }
+      .compare h3 { font-size: 20px; }
+      .legend { display: flex; gap: 14px; font-size: 12px; color: rgba(255,255,255,.6); }
+      .legend i { display: inline-block; width: 8px; height: 8px; margin-right: 6px; border-radius: 50%; vertical-align: middle; }
+      .metric { padding: 18px 0; border-top: 1px solid rgba(255,255,255,.08); }
+      .metric:first-of-type { border-top: 0; padding-top: 0; }
+      .metric-row { display: flex; justify-content: space-between; margin-bottom: 12px; font-size: 15px; }
+      .metric-row b { font-weight: 400; color: rgba(255,255,255,.88); }
+      .metric-row em {
+        font-style: normal;
+        font-size: 12px;
+        padding: 3px 10px;
+        border-radius: 999px;
+        background: rgba(22,195,74,.14);
+        color: #4ade80;
+      }
+      .metric.p .metric-row em { background: rgba(124,58,237,.22); color: #c4b5fd; }
+      .track { height: 8px; border-radius: 999px; background: rgba(255,255,255,.08); overflow: hidden; }
+      .track i {
         display: block;
         height: 100%;
+        width: var(--w);
         border-radius: inherit;
-        background: var(--green);
+        background: linear-gradient(90deg, #15803d, var(--green));
+        transform-origin: left;
+        transform: scaleX(0);
+        transition: transform 1.4s var(--ease);
       }
+      .metric.p .track i { background: linear-gradient(90deg, #5b21b6, #a78bfa); }
+      .compare.in .track i { transform: scaleX(1); }
+      .metric:nth-of-type(2) .track i { transition-delay: .12s; }
+      .metric:nth-of-type(3) .track i { transition-delay: .24s; }
+      .metric:nth-of-type(4) .track i { transition-delay: .36s; }
 
-      .bar.purple i {
-        background: var(--purple);
-      }
-
-      .industry-section {
+      /* ---------- Industries ---------- */
+      .industries-shell { padding: 0 12px; }
+      .industries {
         position: relative;
         isolation: isolate;
         overflow: hidden;
+        max-width: 1440px;
+        margin: 0 auto;
+        border-radius: var(--radius-lg);
+        background: var(--ink);
         color: var(--white);
-        background:
-          linear-gradient(180deg, #191d2c 0%, rgba(25, 29, 44, 0) 16%),
-          radial-gradient(circle at 12% 42%, rgba(124, 58, 237, 0.34), transparent 28%),
-          radial-gradient(circle at 86% 34%, rgba(22, 195, 74, 0.28), transparent 28%),
-          radial-gradient(circle at 54% 94%, rgba(45, 212, 191, 0.18), transparent 32%),
-          linear-gradient(135deg, #0b0d13, #111827 58%, #0f1115);
       }
-
-      .industry-section::before {
+      .industries::before {
         content: "";
         position: absolute;
         inset: 0;
         z-index: -1;
         background:
-          linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
-          linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
-        background-size: 78px 78px;
-        mask-image: linear-gradient(180deg, transparent 0, black 18%, black 80%, transparent 100%);
+          radial-gradient(35% 40% at 10% 10%, rgba(124,58,237,.35), transparent 70%),
+          radial-gradient(35% 40% at 90% 30%, rgba(22,195,74,.18), transparent 70%),
+          radial-gradient(40% 40% at 50% 110%, rgba(45,212,191,.16), transparent 70%);
       }
-
-      .industry-section .section-head p {
-        color: rgba(255, 255, 255, 0.72);
-      }
-
-      .industries {
+      .ind-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+      .ind {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 38px;
+        grid-template-rows: auto 1fr;
+        border-radius: 22px;
+        border: 1px solid rgba(255,255,255,.08);
+        background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.015));
+        overflow: hidden;
+        transition: border-color .4s var(--ease), transform .4s var(--ease);
       }
-
-      .industry {
-        display: grid;
-        gap: 24px;
-        align-content: start;
-      }
-
-      .industry-visual {
+      .ind:hover { border-color: rgba(196,181,253,.35); transform: translateY(-4px); }
+      .ind-media {
+        height: 340px;
         display: flex;
         align-items: flex-end;
         justify-content: center;
-        height: 430px;
+        padding: 32px 24px 0;
+        background: radial-gradient(60% 60% at 50% 70%, rgba(124,58,237,.18), transparent 70%);
       }
-
-      .industry-visual img {
-        width: 100%;
-        max-width: 360px;
-        height: 100%;
-        object-fit: contain;
-        object-position: bottom center;
-      }
-
-      .industry-body {
-        width: min(100%, 360px);
-        margin: 0 auto;
-        padding: 0;
-      }
-
-      .industry h3 {
-        color: var(--white);
-        text-align: center;
-      }
-
-      .industry ul {
+      .ind-media img { height: 100%; width: auto; object-fit: contain; object-position: bottom; }
+      .ind-body { padding: 28px 28px 32px; }
+      .ind h3 { font-size: 21px; margin-bottom: 18px; }
+      .ind ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+      .ind li {
         display: grid;
+        grid-template-columns: 18px 1fr;
         gap: 12px;
-        margin: 22px 0 0;
-        padding: 0;
-        list-style: none;
-        color: rgba(255, 255, 255, 0.72);
+        font-size: 15px;
+        color: rgba(255,255,255,.7);
       }
+      .ind li svg { width: 18px; height: 18px; margin-top: 3px; color: var(--green); }
 
-      .industry li {
-        position: relative;
-        padding-left: 20px;
-      }
-
-      .industry li::before {
-        content: "";
-        position: absolute;
-        left: 0;
-        top: 10px;
-        width: 8px;
-        height: 8px;
-        border-radius: 50%;
-        background: var(--green);
-      }
-
-      .steps {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 18px;
-        counter-reset: step;
-      }
-
+      /* ---------- Steps ---------- */
+      .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; position: relative; }
       .step {
-        padding: 26px;
-        border-top: 4px solid var(--purple);
-        border-radius: 8px;
+        position: relative;
+        padding: 28px 26px 30px;
+        border-radius: var(--radius-lg);
         background: var(--white);
-        counter-increment: step;
+        border: 1px solid var(--divider);
+        transition: border-color .3s var(--ease), box-shadow .3s var(--ease);
       }
-
-      .step::before {
-        content: "0" counter(step);
-        display: block;
-        margin-bottom: 18px;
-        color: var(--muted);
-        font-weight: 900;
-      }
-
-      .step h3 {
-        font-size: 21px;
-      }
-
-      .step p {
-        color: var(--graphite);
-      }
-
-      .cta {
-        padding: 74px 0;
-        background:
-          radial-gradient(circle at 82% 22%, rgba(22, 195, 74, 0.18), transparent 28%),
-          linear-gradient(135deg, var(--black), #191d2c);
-        color: var(--white);
-      }
-
-      .cta-box {
-        display: grid;
-        grid-template-columns: 1fr auto;
-        gap: 30px;
+      .step:hover { border-color: #d8ccfb; box-shadow: 0 24px 50px -30px rgba(124,58,237,.35); }
+      .step-num {
+        display: flex;
         align-items: center;
+        gap: 12px;
+        margin-bottom: 40px;
+        font-size: 13px;
+        color: var(--muted);
       }
-
-      .cta p {
-        max-width: 680px;
-        margin-bottom: 0;
-        color: #d9dee5;
-        font-size: 19px;
+      .step-num b {
+        width: 40px; height: 40px;
+        display: grid; place-items: center;
+        border-radius: 12px;
+        background: var(--purple-soft);
+        color: var(--purple);
+        font-weight: 600;
+        font-size: 15px;
       }
+      .step-num::after { content: ""; flex: 1; height: 1px; background: linear-gradient(90deg, var(--divider), transparent); }
+      .step h3 { font-size: 21px; margin-bottom: 10px; }
+      .step p { color: var(--graphite); font-size: 15px; }
 
-      footer {
-        padding: 44px 0 28px;
-        border-top: 1px solid var(--divider);
-        background: var(--white);
-      }
-
-      .footer-grid {
+      /* ---------- CTA ---------- */
+      .cta-section { padding: 0 0 120px; }
+      .cta {
+        position: relative;
+        isolation: isolate;
+        overflow: hidden;
         display: grid;
         grid-template-columns: minmax(0, 1fr) auto;
-        gap: 32px;
+        gap: 40px;
         align-items: center;
+        padding: 64px;
+        border-radius: var(--radius-lg);
+        color: var(--white);
+        background: linear-gradient(120deg, #5b21b6 0%, var(--purple) 45%, #8b5cf6 100%);
       }
-
-      .footer-brand {
-        display: flex;
-        align-items: center;
-        min-width: 0;
+      .cta::before {
+        content: "";
+        position: absolute;
+        z-index: -1;
+        right: -10%; top: -60%;
+        width: 60%; aspect-ratio: 1;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(22,195,74,.55), transparent 65%);
+        filter: blur(30px);
       }
-
-      .footer-brand img {
-        width: 190px;
-        height: 69px;
-        object-fit: contain;
+      .cta::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        background-image: radial-gradient(rgba(255,255,255,.16) 1px, transparent 1px);
+        background-size: 22px 22px;
+        mask-image: linear-gradient(90deg, transparent 30%, #000);
+        -webkit-mask-image: linear-gradient(90deg, transparent 30%, #000);
       }
+      .cta h2 { margin-bottom: 14px; }
+      .cta p { max-width: 640px; font-size: 18px; color: rgba(255,255,255,.82); }
+      .cta-actions { display: grid; gap: 12px; justify-items: stretch; }
+      .cta-actions .btn { min-height: 56px; padding: 0 28px; }
 
-      .footer-contact {
-        color: var(--graphite);
-      }
-
-      .footer-contact {
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        justify-content: flex-end;
-        gap: 10px;
-        font-weight: 750;
-      }
-
-      .footer-contact a {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        min-height: 42px;
-        padding: 0 14px;
-        border: 1px solid var(--divider);
-        border-radius: 999px;
-        background: var(--light);
-        color: var(--black);
-        font-weight: 850;
-        white-space: nowrap;
-      }
-
-      .footer-bottom {
-        grid-column: 1 / -1;
+      /* ---------- Footer ---------- */
+      footer { padding: 0 0 36px; }
+      .foot {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        gap: 20px;
-        margin-top: 28px;
-        padding-top: 20px;
+        gap: 24px;
+        padding: 36px 0;
         border-top: 1px solid var(--divider);
-        color: var(--muted);
+      }
+      .foot img { width: 138px; height: auto; }
+      .foot-contact { display: flex; flex-wrap: wrap; gap: 8px; }
+      .chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        height: 42px;
+        padding: 0 16px;
+        border-radius: 999px;
+        background: var(--light);
         font-size: 14px;
+        transition: background .2s;
+      }
+      .chip:hover { background: var(--divider); }
+      .chip svg { width: 16px; height: 16px; color: var(--purple); }
+      .foot-bottom {
+        display: flex;
+        justify-content: space-between;
+        gap: 16px;
+        font-size: 13px;
+        color: var(--muted);
       }
 
-      @media (max-width: 980px) {
-        .nav-links {
-          display: none;
-        }
+      /* ---------- Reveal ---------- */
+      .js .reveal { opacity: 0; transform: translateY(18px); transition: opacity .8s var(--ease), transform .8s var(--ease); }
+      .js .reveal.in { opacity: 1; transform: none; }
+      .js .reveal.d1 { transition-delay: .08s; }
+      .js .reveal.d2 { transition-delay: .16s; }
+      .js .reveal.d3 { transition-delay: .24s; }
 
-        .hero-grid,
-        .split,
-        .cta-box,
-        .footer-grid {
-          grid-template-columns: 1fr;
-        }
-
-        .cards,
-        .steps {
-          grid-template-columns: repeat(2, 1fr);
-        }
-
-        .industries {
-          grid-template-columns: 1fr;
-        }
-
-        .industry {
-          grid-template-columns: minmax(220px, 38%) 1fr;
-          align-items: center;
-        }
-
-        .industry-visual {
-          height: 360px;
-        }
-
-        .simple-panel {
-          max-width: 560px;
-        }
-
-        .hero-visual {
-          position: relative;
-          right: auto;
-          top: auto;
-          transform: none;
-          width: 100%;
-          max-width: 420px;
-          justify-self: start;
-        }
-
-        .footer-contact {
-          justify-content: flex-start;
-        }
-
-        .footer-bottom {
-          align-items: flex-start;
-          flex-direction: column;
-          gap: 8px;
-        }
+      @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after { animation: none !important; transition: none !important; }
+        .js .reveal { opacity: 1; transform: none; }
+        .track i { transform: none !important; }
       }
 
-      @media (max-width: 640px) {
-        .container {
-          width: min(100% - 28px, 1120px);
-        }
+      /* ---------- Responsive ---------- */
+      @media (max-width: 1024px) {
+        .nav-links { display: none; }
+        .hero-inner { grid-template-columns: 1fr; padding: 64px 0 56px; }
+        .hero-visual { order: -1; max-width: 340px; justify-self: start; }
+        .head, .benefits-grid { grid-template-columns: 1fr; gap: 20px; }
+        .benefits-grid { gap: 48px; }
+        .bento { grid-template-columns: repeat(2, 1fr); }
+        .ind-grid { grid-template-columns: 1fr; }
+        .ind { grid-template-columns: 40% 1fr; grid-template-rows: none; align-items: center; }
+        .ind-media { height: 300px; padding-bottom: 0; }
+        .steps { grid-template-columns: repeat(2, 1fr); }
+        .cta { grid-template-columns: 1fr; padding: 48px; }
+        .cta-actions { justify-items: start; }
+      }
 
-        .nav-inner {
-          gap: 10px;
-        }
-
-        .nav-actions {
-          gap: 8px;
-        }
-
-        .brand img {
-          width: 160px;
-        }
-
-        .nav .button {
-          min-height: 40px;
-          padding: 0 12px;
-          font-size: 13px;
-        }
-
-        .footer-brand {
-          align-items: flex-start;
-        }
-
-        .footer-contact {
-          display: grid;
-          width: 100%;
-          gap: 10px;
-          justify-items: start;
-        }
-
-        .footer-contact a {
-          width: 100%;
-        }
-
-        .language-switch {
-          padding: 3px;
-          font-size: 12px;
-        }
-
-        .language-switch a,
-        .language-switch span {
-          min-width: 30px;
-          min-height: 28px;
-          padding: 0 8px;
-        }
-
-        section,
-        .hero {
-          padding: 62px 0;
-        }
-
-        .hero-copy,
-        .section-head p,
-        .wide-copy,
-        .cta p {
-          font-size: 18px;
-        }
-
-        h1 {
-          font-size: 38px;
-          line-height: 1.08;
-        }
-
-        .hero-actions,
-        .hero-actions .button,
-        .cta .button {
-          width: 100%;
-        }
-
-        .cards,
-        .steps {
-          grid-template-columns: 1fr;
-        }
-
-        .industry {
-          grid-template-columns: 1fr;
-          gap: 20px;
-        }
-
-        .industry-visual {
-          height: 390px;
-        }
-
-        .card-image {
-          height: 210px;
-        }
-
-        .tag {
-          justify-self: start;
-        }
+      @media (max-width: 680px) {
+        .container { width: calc(100% - 32px); }
+        .nav-wrap { padding: 8px 0; }
+        .nav { height: 58px; padding: 0 6px 0 14px; }
+        .brand img { width: 112px; }
+        .nav .btn { min-height: 40px; padding: 0 14px; font-size: 13px; }
+        .nav .btn svg { display: none; }
+        .lang > * { min-width: 30px; height: 28px; }
+        .hero-shell, .industries-shell { padding: 0 8px; }
+        .hero, .industries { border-radius: 22px; }
+        .hero { min-height: 0; }
+        .hero-inner { padding: 40px 0 36px; gap: 24px; }
+        .hero-visual { max-width: 220px; }
+        .hero-copy, .lead, .cta p { font-size: 16px; }
+        .hero-actions .btn { flex: 1 1 100%; }
+        section { padding: 80px 0; }
+        .head { margin-bottom: 36px; }
+        .bento { grid-template-columns: 1fr; }
+        #services { padding: 72px 0; }
+        .svc-media { height: 200px; padding: 20px; }
+        .svc-body { padding: 24px; }
+        .ind { grid-template-columns: 1fr; }
+        .ind-media { height: 280px; }
+        .steps { grid-template-columns: 1fr; }
+        .step-num { margin-bottom: 24px; }
+        .compare { padding: 26px; }
+        .legend { display: none; }
+        .cta-section { padding-bottom: 80px; }
+        .cta { padding: 36px 24px; border-radius: 22px; }
+        .cta-actions, .cta-actions .btn { width: 100%; }
+        .foot { flex-direction: column; align-items: flex-start; }
+        .foot-contact, .chip { width: 100%; }
+        .foot-bottom { flex-direction: column; gap: 4px; }
       }
     </style>
   </head>
   <body>
-    <header class="nav">
-      <div class="container nav-inner">
-        <a class="brand" href="#top" aria-label="Pulsar მთავარი გვერდი">
-          <img src="pulsar-logo-cropped.png" alt="Pulsar ლოგო">
-        </a>
-        <nav class="nav-links" aria-label="მთავარი ნავიგაცია">
-          <a href="#services">სერვისები</a>
-          <a href="#benefits">სარგებელი</a>
-          <a href="#industries">ვისთვის</a>
-          <a href="#contact">კონტაქტი</a>
-        </nav>
-        <div class="nav-actions">
-          <div class="language-switch" aria-label="ენის არჩევა">
-            <span class="active">KA</span>
-            <a href="en/">EN</a>
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+      <defs>
+        <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10" stroke-width="1.8" opacity=".35"/><path d="m7.5 12.5 3 3 6-6.5"/></symbol>
+        <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+        <symbol id="i-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+        <symbol id="i-eye" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></symbol>
+        <symbol id="i-chart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m7 15 4-4 3 3 5-6"/></symbol>
+        <symbol id="i-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2Z"/></symbol>
+        <symbol id="i-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="m3 7 9 6 9-6"/></symbol>
+      </defs>
+    </svg>
+
+    <div class="nav-wrap" id="nav">
+      <div class="container">
+        <header class="nav">
+          <a class="brand" href="#top" aria-label="Pulsar მთავარი გვერდი">
+            <img src="pulsar-logo-cropped.png" alt="Pulsar ლოგო" width="1000" height="300">
+          </a>
+          <nav class="nav-links" aria-label="მთავარი ნავიგაცია">
+            <a href="#services">სერვისები</a>
+            <a href="#benefits">სარგებელი</a>
+            <a href="#industries">ვისთვის</a>
+            <a href="#contact">კონტაქტი</a>
+          </nav>
+          <div class="nav-actions">
+            <div class="lang" aria-label="ენის არჩევა">
+              <span class="active">KA</span>
+              <a href="en/">EN</a>
+            </div>
+            <a class="btn btn-primary" href="https://wa.me/995599992030" target="_blank" rel="noopener">დაგვიკავშირდით <svg><use href="#i-arrow"/></svg></a>
           </div>
-          <a class="button" href="https://wa.me/995599992030" target="_blank" rel="noopener">დაგვიკავშირდით</a>
-        </div>
+        </header>
       </div>
-    </header>
+    </div>
 
     <main id="top">
-      <section class="hero">
-        <div class="container hero-grid">
-          <div>
-            <div class="eyebrow">AI, ავტომატიზაცია, პროგრამები და სმარტ კამერები</div>
-            <h1>საუკეთესო AI გადაწყვეტები თქვენი ბიზნესისთვის</h1>
-            <p class="hero-copy">
-              ვეხმარებით ბიზნესებს ოპტიმიზაციაში, ეფექტურობის გაზრდაში, შეცდომების შემცირებაში და ყოველდღიური ბიზნეს პროცესების გაუმჯობესებაში
-            </p>
-            <div class="hero-actions">
-              <a class="button" href="https://wa.me/995599992030" target="_blank" rel="noopener">დაგვირეკეთ</a>
-              <a class="button secondary" href="#services">ნახეთ ჩვენი სერვისები</a>
+      <!-- Hero -->
+      <div class="hero-shell">
+        <section class="hero" style="padding:0">
+          <div class="container hero-inner">
+            <div>
+              <div class="pill reveal"><span class="dot"></span>AI, ავტომატიზაცია, პროგრამები და სმარტ კამერები</div>
+              <h1 class="reveal d1">საუკეთესო <span class="grad">AI გადაწყვეტები</span> თქვენი ბიზნესისთვის</h1>
+              <p class="hero-copy reveal d2">
+                ვეხმარებით ბიზნესებს ოპტიმიზაციაში, ეფექტურობის გაზრდაში, შეცდომების შემცირებაში და ყოველდღიური ბიზნეს პროცესების გაუმჯობესებაში
+              </p>
+              <div class="hero-actions reveal d3">
+                <a class="btn btn-primary" href="https://wa.me/995599992030" target="_blank" rel="noopener">დაგვირეკეთ <svg><use href="#i-arrow"/></svg></a>
+                <a class="btn btn-ghost" href="#services">ნახეთ ჩვენი სერვისები</a>
+              </div>
+              <div class="proof reveal d3">
+                <span><svg><use href="#i-check"/></svg>ნაკლები რუტინა</span>
+                <span><svg><use href="#i-check"/></svg>სრული კონტროლი</span>
+                <span><svg><use href="#i-check"/></svg>დროული გადაწყვეტილებები</span>
+              </div>
             </div>
-            <div class="proof-row">
-              <span>ნაკლები რუტინა</span>
-              <span>სრული კონტროლი</span>
-              <span>დროული გადაწყვეტილებები</span>
+            <div class="hero-visual reveal d2" aria-hidden="true">
+              <img src="1.png" alt="" width="1300" height="1300">
             </div>
           </div>
-          <div class="hero-visual" aria-hidden="true">
-            <img src="1.png" alt="">
-          </div>
-        </div>
-      </section>
+        </section>
+      </div>
 
+      <!-- Services -->
       <section id="services">
         <div class="container">
-          <div class="section-head">
-            <h2>AI ტექნოლოგიები ბიზნესის ეფექტურობის გასაზრდელად</h2>
-            <p>
+          <div class="head">
+            <div class="reveal">
+              <div class="kicker">სერვისები</div>
+              <h2>AI ტექნოლოგიები ბიზნესის ეფექტურობის გასაზრდელად</h2>
+            </div>
+            <p class="lead reveal d1">
               არ გჭირდებათ AI-ის ექსპერტი იყოთ. საკმარისია მოგვიყვეთ, რა ანელებს და ართულებს სამუშაოს — დანარჩენს ჩვენ ვაკეთებთ.
             </p>
           </div>
 
-          <div class="cards">
-            <article class="card featured">
-              <div class="card-image">
-                <img src="ai.png" alt="">
+          <div class="bento">
+            <article class="svc reveal">
+              <div class="svc-media"><img src="ai.png" alt="" loading="lazy"></div>
+              <div class="svc-body">
+                <span class="svc-tag">01</span>
+                <h3>AI გადაწყვეტები</h3>
+                <p>AI-ს შეუძლია კითხვებზე პასუხის გაცემა, დოკუმენტების დამუშავება, რეპორტების მომზადება და საჭირო ინფორმაციის წამებში მოძებნა.</p>
               </div>
-              <h3>AI გადაწყვეტები</h3>
-              <p>
-                AI-ს შეუძლია კითხვებზე პასუხის გაცემა, დოკუმენტების დამუშავება, რეპორტების მომზადება და საჭირო ინფორმაციის წამებში მოძებნა.
-              </p>
             </article>
-            <article class="card">
-              <div class="card-image">
-                <img src="robots.png" alt="">
+            <article class="svc reveal d1">
+              <div class="svc-media"><img src="robots.png" alt="" loading="lazy"></div>
+              <div class="svc-body">
+                <span class="svc-tag">02</span>
+                <h3>რობოტები</h3>
+                <p>რობოტებს შეუძლიათ უკვე თქვენს ოფისში ან სახლში აკეთონ რუტინული საქმეები. ანდეთ მათ ყველა რუტინული საქმე და ისინი დაუზარელად ყველაფერს გააკეთებენ.</p>
               </div>
-              <h3>რობოტები</h3>
-              <p>
-                რობოტებს შეუძლიათ უკვე თქვენს ოფისში ან სახლში აკეთონ რუტინული საქმეები. ანდეთ მათ ყველა რუტინული საქმე და ისინი დაუზარელად ყველაფერს გააკეთებენ.
-              </p>
             </article>
-            <article class="card">
-              <div class="card-image">
-                <img src="consulting.png" alt="">
+            <article class="svc reveal">
+              <div class="svc-media"><img src="consulting.png" alt="" loading="lazy"></div>
+              <div class="svc-body">
+                <span class="svc-tag">03</span>
+                <h3>ტექ კონსალტინგი</h3>
+                <p>გეხმარებით სწორი ციფრული სტრატეგიის შერჩევაში და ვქმნით მორგებულ სისტემებს: პლატფორმებს, დეშბორდებს და რეპორტებს.</p>
               </div>
-              <h3>ტექ კონსალტინგი</h3>
-              <p>
-                გეხმარებით სწორი ციფრული სტრატეგიის შერჩევაში და ვქმნით მორგებულ სისტემებს: პლატფორმებს, დეშბორდებს და რეპორტებს.
-              </p>
             </article>
-            <article class="card">
-              <div class="card-image">
-                <img src="automation.png" alt="">
+            <article class="svc reveal d1">
+              <div class="svc-media"><img src="automation.png" alt="" loading="lazy"></div>
+              <div class="svc-body">
+                <span class="svc-tag">04</span>
+                <h3>სმარტ კონტროლი</h3>
+                <p>სხვადასხვა პროგრამებს, ჭკვიან კამერებსა და სენსორებს ვაერთიანებთ ერთიან სისტემაში, რაც გაძლევთ მაღაზიის, ოფისის, საწყობის თუ ობიექტის სრულ კონტროლს AI-ს დახმარებით.</p>
               </div>
-              <h3>სმარტ კონტროლი</h3>
-              <p>
-                სხვადასხვა პროგრამებს, ჭკვიან კამერებსა და სენსორებს ვაერთიანებთ ერთიან სისტემაში, რაც გაძლევთ მაღაზიის, ოფისის, საწყობის თუ ობიექტის სრულ კონტროლს AI-ს დახმარებით.
-              </p>
             </article>
           </div>
         </div>
       </section>
 
-      <section id="benefits" class="band">
-        <div class="container split">
+      <!-- Benefits -->
+      <section id="benefits" class="benefits">
+        <div class="container benefits-grid">
           <div>
-            <div class="eyebrow">რეალური შედეგები</div>
-            <h2>ნაკლები ქაოსი, მეტი შედეგი — ყოველ სამუშაო დღეს</h2>
-            <p class="wide-copy">
+            <div class="kicker reveal">რეალური შედეგები</div>
+            <h2 class="reveal">ნაკლები ქაოსი, მეტი შედეგი — ყოველ სამუშაო დღეს</h2>
+            <p class="lead reveal d1">
               გეხმარებით რუტინული სამუშაოს შემცირებაში და მნიშვნელოვანი ინფორმაციის სწრაფად დანახვა-დამუშავებაში. აქედან გამომდინარე, გაქვთ უკეთესი შედეგი, ნაკლები შეცდომა და უფრო მარტივად სამართავი ბიზნესი.
             </p>
-            <div class="benefit-list">
-              <div class="benefit">
-                <div class="check">✓</div>
+            <div class="ben-list">
+              <div class="ben reveal">
+                <div class="ben-icon"><svg><use href="#i-clock"/></svg></div>
                 <div>
                   <strong>ყოველდღე დაზოგეთ დრო</strong>
                   <span>რეპორტები, შემოწმება, შეხსენება და განახლებები შეიძლება ავტომატურად შესრულდეს.</span>
                 </div>
               </div>
-              <div class="benefit">
-                <div class="check">✓</div>
+              <div class="ben reveal d1">
+                <div class="ben-icon"><svg><use href="#i-eye"/></svg></div>
                 <div>
                   <strong>იცოდეთ რა ხდება ბიზნესში</strong>
                   <span>მენეჯერები ხედავენ საქმეს, პრობლემებს და რიცხვებს ერთ მარტივ სივრცეში.</span>
                 </div>
               </div>
-              <div class="benefit">
-                <div class="check">✓</div>
+              <div class="ben reveal d2">
+                <div class="ben-icon"><svg><use href="#i-chart"/></svg></div>
                 <div>
                   <strong>მიიღეთ უკეთესი გადაწყვეტილებები</strong>
                   <span>იღებთ დამუშავებულ ინფორმაციას მანამ, სანამ პრობლემა ძვირი დაგიჯდებათ.</span>
@@ -1093,109 +843,116 @@
             </div>
           </div>
 
-          <div class="simple-panel">
-            <h3>მანამდე და შემდეგ</h3>
-            <div class="bar-list">
-              <div class="bar-row">
-                <span><b>რუტინა</b><b>ნაკლები</b></span>
-                <div class="bar"><i style="width: 34%"></i></div>
-              </div>
-              <div class="bar-row">
-                <span><b>ბიზნესის კონტროლი</b><b>მეტი</b></span>
-                <div class="bar purple"><i style="width: 86%"></i></div>
-              </div>
-              <div class="bar-row">
-                <span><b>სასარგებლო ინფორმაცია</b><b>სწრაფი</b></span>
-                <div class="bar"><i style="width: 78%"></i></div>
-              </div>
-              <div class="bar-row">
-                <span><b>გუნდის ფოკუსი</b><b>უკეთესი</b></span>
-                <div class="bar purple"><i style="width: 82%"></i></div>
-              </div>
+          <div class="compare reveal d1" id="compare">
+            <div class="compare-top">
+              <h3>მანამდე და შემდეგ</h3>
+              <div class="legend"><span><i style="background:var(--green)"></i>Pulsar</span></div>
+            </div>
+            <div class="metric">
+              <div class="metric-row"><b>რუტინა</b><em>ნაკლები</em></div>
+              <div class="track"><i style="--w:34%"></i></div>
+            </div>
+            <div class="metric p">
+              <div class="metric-row"><b>ბიზნესის კონტროლი</b><em>მეტი</em></div>
+              <div class="track"><i style="--w:86%"></i></div>
+            </div>
+            <div class="metric">
+              <div class="metric-row"><b>სასარგებლო ინფორმაცია</b><em>სწრაფი</em></div>
+              <div class="track"><i style="--w:78%"></i></div>
+            </div>
+            <div class="metric p">
+              <div class="metric-row"><b>გუნდის ფოკუსი</b><em>უკეთესი</em></div>
+              <div class="track"><i style="--w:82%"></i></div>
             </div>
           </div>
         </div>
       </section>
 
-      <section id="industries" class="industry-section">
-        <div class="container">
-          <div class="section-head center">
-            <h2>სასარგებლოა იმ კომპანიებისთვის, რომლებსაც ყოველდღიური კომპლექსური ოპერაციები აქვთ</h2>
-            <p>
-              თუ თქვენს ბიზნესს ჰყავს დიდი გუნდი, აქვს ბევრი რუტინული საქმე, რთული საოპერაციო ნაწილი - შეგვიძლია ციფრულად ან ხელოვნური ინტელექტის საშუალებით დაგეხმაროთ.
-            </p>
-          </div>
+      <!-- Industries -->
+      <div class="industries-shell" id="industries">
+        <section class="industries on-dark">
+          <div class="container">
+            <div class="head center">
+              <div class="kicker reveal">ვისთვის</div>
+              <h2 class="reveal">სასარგებლოა იმ კომპანიებისთვის, რომლებსაც ყოველდღიური კომპლექსური ოპერაციები აქვთ</h2>
+              <p class="lead reveal d1">
+                თუ თქვენს ბიზნესს ჰყავს დიდი გუნდი, აქვს ბევრი რუტინული საქმე, რთული საოპერაციო ნაწილი - შეგვიძლია ციფრულად ან ხელოვნური ინტელექტის საშუალებით დაგეხმაროთ.
+              </p>
+            </div>
 
-          <div class="industries">
-            <article class="industry">
-              <div class="industry-visual">
-                <img src="retail-sector.png" alt="საცალო ვაჭრობის ვიზუალი">
-              </div>
-              <div class="industry-body">
-                <h3>საცალო ვაჭრობა</h3>
-                <ul>
-                  <li>აკონტროლეთ მაღაზიის მუშაობა</li>
-                  <li>აკონტროლეთ მარაგები და გაყიდვები</li>
-                  <li>შეამცირეთ ხელით მომზადებული რეპორტები</li>
-                  <li>გამოიყენეთ კამერები უკეთესი ხილვადობისთვის</li>
-                </ul>
-              </div>
-            </article>
-            <article class="industry">
-              <div class="industry-visual">
-                <img src="construction-sector.png" alt="სამშენებლო სექტორის ვიზუალი">
-              </div>
-              <div class="industry-body">
-                <h3>სამშენებლო სექტორი</h3>
-                <ul>
-                  <li>აკონტროლეთ ობიექტის პროგრესი</li>
-                  <li>მართეთ დავალებები და გუნდი</li>
-                  <li>აკონტროლეთ შრომის უსაფრთხოება</li>
-                  <li>გამოიყენეთ კამერები მნიშვნელოვანი ზონების შესამოწმებლად</li>
-                </ul>
-              </div>
-            </article>
-            <article class="industry">
-              <div class="industry-visual">
-                <img src="heavy.png" alt="მძიმე მრეწველობის ვიზუალი">
-              </div>
-              <div class="industry-body">
-                <h3>მძიმე მრეწველობა</h3>
-                <ul>
-                  <li>აკონტროლეთ წარმოების პროცესი</li>
-                  <li>შეამცირეთ გაჩერებები და შეცდომები</li>
-                  <li>მიიღეთ მონაცემები აღჭურვილობიდან და სამუშაო ზონებიდან</li>
-                  <li>გააუმჯობესეთ უსაფრთხოება და ოპერაციების კონტროლი</li>
-                </ul>
-              </div>
-            </article>
+            <div class="ind-grid">
+              <article class="ind reveal">
+                <div class="ind-media"><img src="retail-sector.png" alt="საცალო ვაჭრობის ვიზუალი" loading="lazy"></div>
+                <div class="ind-body">
+                  <h3>საცალო ვაჭრობა</h3>
+                  <ul>
+                    <li><svg><use href="#i-check"/></svg>აკონტროლეთ მაღაზიის მუშაობა</li>
+                    <li><svg><use href="#i-check"/></svg>აკონტროლეთ მარაგები და გაყიდვები</li>
+                    <li><svg><use href="#i-check"/></svg>შეამცირეთ ხელით მომზადებული რეპორტები</li>
+                    <li><svg><use href="#i-check"/></svg>გამოიყენეთ კამერები უკეთესი ხილვადობისთვის</li>
+                  </ul>
+                </div>
+              </article>
+              <article class="ind reveal d1">
+                <div class="ind-media"><img src="construction-sector.png" alt="სამშენებლო სექტორის ვიზუალი" loading="lazy"></div>
+                <div class="ind-body">
+                  <h3>სამშენებლო სექტორი</h3>
+                  <ul>
+                    <li><svg><use href="#i-check"/></svg>აკონტროლეთ ობიექტის პროგრესი</li>
+                    <li><svg><use href="#i-check"/></svg>მართეთ დავალებები და გუნდი</li>
+                    <li><svg><use href="#i-check"/></svg>აკონტროლეთ შრომის უსაფრთხოება</li>
+                    <li><svg><use href="#i-check"/></svg>გამოიყენეთ კამერები მნიშვნელოვანი ზონების შესამოწმებლად</li>
+                  </ul>
+                </div>
+              </article>
+              <article class="ind reveal d2">
+                <div class="ind-media"><img src="heavy.png" alt="მძიმე მრეწველობის ვიზუალი" loading="lazy"></div>
+                <div class="ind-body">
+                  <h3>მძიმე მრეწველობა</h3>
+                  <ul>
+                    <li><svg><use href="#i-check"/></svg>აკონტროლეთ წარმოების პროცესი</li>
+                    <li><svg><use href="#i-check"/></svg>შეამცირეთ გაჩერებები და შეცდომები</li>
+                    <li><svg><use href="#i-check"/></svg>მიიღეთ მონაცემები აღჭურვილობიდან და სამუშაო ზონებიდან</li>
+                    <li><svg><use href="#i-check"/></svg>გააუმჯობესეთ უსაფრთხოება და ოპერაციების კონტროლი</li>
+                  </ul>
+                </div>
+              </article>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </div>
 
+      <!-- Process -->
       <section>
         <div class="container">
-          <div class="section-head">
-            <h2>როგორ ვმუშაობთ თქვენთან</h2>
-            <p>
+          <div class="head">
+            <div class="reveal">
+              <div class="kicker">პროცესი</div>
+              <h2>როგორ ვმუშაობთ თქვენთან</h2>
+            </div>
+            <p class="lead reveal d1">
               არ ვიწყებთ პირდაპირ ტექნოლოგიის ინტეგრაციით. ვიწყებთ თქვენი ბიზნეს გამოწვევების შესწავლით და ვირჩევთ ტექნოლოგიურად სწორ და მარტივ გზას მის მოსაგვარებლად.
             </p>
           </div>
 
           <div class="steps">
-            <article class="step">
+            <article class="step reveal">
+              <div class="step-num"><b>1</b></div>
               <h3>გისმენთ</h3>
               <p>გვიყვებით რა გამოწვევების წინაშე დგახართ.</p>
             </article>
-            <article class="step">
+            <article class="step reveal d1">
+              <div class="step-num"><b>2</b></div>
               <h3>ვგეგმავთ</h3>
               <p>გაჩვენებთ მარტივ და ბიუჯეტურ გადაწყვეტას სანამ მუშაობას დავიწყებთ.</p>
             </article>
-            <article class="step">
+            <article class="step reveal d2">
+              <div class="step-num"><b>3</b></div>
               <h3>ვაინტეგრირებთ</h3>
               <p>ვაშენებთ და ვაინტეგრირებთ ზუსტად იმას, რაც თქვენს გუნდს ყველაზე მეტად სჭირდება.</p>
             </article>
-            <article class="step">
+            <article class="step reveal d3">
+              <div class="step-num"><b>4</b></div>
               <h3>გეხმარებით</h3>
               <p>ვასწავლით თქვენს გუნდს AI სისტემების გამოყენებას და ეფექტურ მუშაობას.</p>
             </article>
@@ -1203,33 +960,59 @@
         </div>
       </section>
 
-      <section id="contact" class="cta">
-        <div class="container cta-box">
-          <div>
-            <h2>გაგვიზიარეთ თქვენი ბიზნეს გამოწვევები</h2>
-            <p>
-              დაგეხმარებით იპოვოთ მარტივი და ეფექტური ტექნოლოგიური გადაწყვეტა, რომელიც დაზოგავს დროს, მოგცემთ კონტროლს და თქვენს გუნდს უკეთ მუშაობაში დაეხმარება.
-            </p>
+      <!-- CTA -->
+      <div class="cta-section" id="contact">
+        <div class="container">
+          <div class="cta reveal">
+            <div>
+              <h2>გაგვიზიარეთ თქვენი ბიზნეს გამოწვევები</h2>
+              <p>
+                დაგეხმარებით იპოვოთ მარტივი და ეფექტური ტექნოლოგიური გადაწყვეტა, რომელიც დაზოგავს დროს, მოგცემთ კონტროლს და თქვენს გუნდს უკეთ მუშაობაში დაეხმარება.
+              </p>
+            </div>
+            <div class="cta-actions">
+              <a class="btn btn-white" href="https://wa.me/995599992030" target="_blank" rel="noopener">დაგვიკავშირდით <svg><use href="#i-arrow"/></svg></a>
+            </div>
           </div>
-          <a class="button" href="https://wa.me/995599992030" target="_blank" rel="noopener">დაგვიკავშირდით</a>
         </div>
-      </section>
+      </div>
     </main>
 
     <footer>
-      <div class="container footer-grid">
-        <div class="footer-brand">
-          <img src="pulsar-logo-cropped.png" alt="Pulsar ლოგო">
+      <div class="container">
+        <div class="foot">
+          <img src="pulsar-logo-cropped.png" alt="Pulsar ლოგო" width="1000" height="300" loading="lazy">
+          <div class="foot-contact">
+            <a class="chip" href="https://wa.me/995599992030" target="_blank" rel="noopener"><svg><use href="#i-phone"/></svg>+995 599 99 20 30</a>
+            <a class="chip" href="mailto:info@pulsartech.ge"><svg><use href="#i-mail"/></svg>info@pulsartech.ge</a>
+          </div>
         </div>
-        <div class="footer-contact">
-          <a href="https://wa.me/995599992030" target="_blank" rel="noopener">+995 599 99 20 30</a>
-          <a href="mailto:info@pulsartech.ge">info@pulsartech.ge</a>
-        </div>
-        <div class="footer-bottom">
+        <div class="foot-bottom">
           <span>© 2026 LLC Pulsar</span>
           <span>AI, ავტომატიზაცია, პროგრამები და სმარტ კამერები</span>
         </div>
       </div>
     </footer>
+
+    <script>
+      (function () {
+        var nav = document.getElementById("nav");
+        var onScroll = function () { nav.classList.toggle("scrolled", window.scrollY > 8); };
+        onScroll();
+        window.addEventListener("scroll", onScroll, { passive: true });
+
+        var els = document.querySelectorAll(".reveal");
+        if (!("IntersectionObserver" in window)) {
+          els.forEach(function (el) { el.classList.add("in"); });
+          return;
+        }
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) {
+            if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
+          });
+        }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
+        els.forEach(function (el) { io.observe(el); });
+      })();
+    </script>
   </body>
 </html>

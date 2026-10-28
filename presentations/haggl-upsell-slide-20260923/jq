@@ -1,0 +1,11 @@
+#!/bin/sh
+node_bin="/Users/yc/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node"
+json_path=""
+for arg in "$@"; do json_path="$arg"; done
+"$node_bin" -e '
+const fs=require("fs");
+const p=process.argv[1];
+const d=JSON.parse(fs.readFileSync(p,"utf8"));
+const slides=(d.slides||[]).map(s=>({slideIndex:s.index,slideObjectId:s.slideId,titlePreview:s.titlePreview??null,layoutId:s.layoutId??null,isSkipped:s.isSkipped===true})).sort((a,b)=>a.slideIndex-b.slideIndex);
+process.stdout.write(JSON.stringify({presentationId:d?.source?.presentation?.id,slides}));
+' "$json_path"

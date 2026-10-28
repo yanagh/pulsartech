@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "presentation": {
+    "id": "1GA--8FsuuzCTUxJgUS8jiyiDEeVtJUDTNL7Zj7FNUMY",
+    "title": "Pulsartech_x_Haggl_Georgia_Client_Updated",
+    "revisionId": "BD41rTFAsimcqA",
+    "slideCount": 16
+  },
+  "snapshotSha256": "e25cd0ef5b0cb7b81ef04c5eb1f57d87cd57026eaf6ae71adbe8fe15d7b4f191",
+  "summary": {
+    "totalIssues": 0,
+    "reportedIssues": 0,
+    "truncated": false,
+    "bySeverity": {},
+    "byCode": {}
+  },
+  "issues": []
+}
