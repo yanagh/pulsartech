@@ -240,6 +240,7 @@
         font-size: 13px;
         color: rgba(255,255,255,.88);
       }
+      .m-br { display: none; }
       .pill .dot {
         position: relative;
         width: 20px; height: 20px;
@@ -693,6 +694,58 @@
         .foot-contact, .chip { width: 100%; }
         .foot-bottom { flex-direction: column; gap: 4px; }
       }
+
+      /* ---------- Mobile hero ---------- */
+      @media (max-width: 680px) {
+        .hero {
+          min-height: 0;
+          align-items: start;
+        }
+        .hero::before {
+          inset: 0;
+          filter: none;
+          animation: none;
+          background:
+            radial-gradient(90% 45% at 0% 0%, rgba(124,58,237,.55), transparent 70%),
+            radial-gradient(70% 35% at 100% 100%, rgba(22,195,74,.22), transparent 70%);
+        }
+        .hero::after { mask-image: radial-gradient(90% 40% at 90% 0%, #000 10%, transparent 75%); -webkit-mask-image: radial-gradient(90% 40% at 90% 0%, #000 10%, transparent 75%); }
+        .hero-inner { position: relative; display: block; padding: 32px 0 28px; }
+        .hero-visual { display: none; }
+        .pill {
+          position: relative;
+          padding: 6px 12px 6px 6px;
+          gap: 8px;
+          font-size: 12px;
+          line-height: 1.35;
+        }
+        .pill .dot { width: 16px; height: 16px; flex: none; }
+        .m-br { display: inline; }
+        .hero h1 {
+          position: relative;
+          margin: 22px 0 14px;
+          font-size: clamp(28px, 8.2vw, 34px);
+          line-height: 1.22;
+        }
+        .hero-copy { position: relative; font-size: 15px; line-height: 1.6; }
+        .hero-actions { margin: 26px 0 24px; gap: 10px; }
+        .hero-actions .btn { min-height: 50px; font-size: 15px; }
+        .proof {
+          flex-direction: column;
+          gap: 10px;
+          padding-top: 20px;
+          font-size: 14px;
+        }
+        .brand img { width: 104px; }
+        .nav .btn { padding: 0 14px; font-size: 12.5px; }
+      }
+      @media (max-width: 380px) {
+        .brand { flex: none; }
+        .brand img { width: 96px; }
+        .nav-actions { gap: 6px; }
+        .nav .btn { padding: 0 12px; font-size: 12px; }
+        .lang > * { min-width: 28px; }
+      }
     </style>
   </head>
   <body>
@@ -737,7 +790,7 @@
         <section class="hero" style="padding:0">
           <div class="container hero-inner">
             <div>
-              <div class="pill reveal"><span class="dot"></span>AI, ავტომატიზაცია, პროგრამები და სმარტ კამერები</div>
+              <div class="pill reveal"><span class="dot"></span><span>AI, ავტომატიზაცია, პროგრამები <br class="m-br">და სმარტ კამერები</span></div>
               <h1 class="reveal d1">საუკეთესო <span class="grad">AI გადაწყვეტები</span> თქვენი ბიზნესისთვის</h1>
               <p class="hero-copy reveal d2">
                 ვეხმარებით ბიზნესებს ოპტიმიზაციაში, ეფექტურობის გაზრდაში, შეცდომების შემცირებაში და ყოველდღიური ბიზნეს პროცესების გაუმჯობესებაში
